@@ -45,6 +45,8 @@
 <%@page import="org.dspace.core.Constants"%>
 <%@page import="org.dspace.eperson.EPerson"%>
 <%@page import="org.dspace.versioning.VersionHistory"%>
+<%@ page import="pt.keep.dspace.sharing.ItemWrapper" %>
+<%@ page import="pt.keep.dspace.sharing.SharingManager" %>
 <%
     // Attributes
     Boolean displayAllBoolean = (Boolean) request.getAttribute("display.all");
@@ -55,6 +57,10 @@
     Collection[] collections = (Collection[]) request.getAttribute("collections");
     Boolean admin_b = (Boolean)request.getAttribute("admin_button");
     boolean admin_button = (admin_b == null ? false : admin_b.booleanValue());
+
+    //Because of sharing bar and feedback
+    Boolean admin = (Boolean)request.getAttribute("is.admin");
+    boolean isAdmin = (admin == null ? false : admin.booleanValue());
     
     // get the workspace id if one has been passed
     Integer workspace_id = (Integer) request.getAttribute("workspace_id");
@@ -202,14 +208,14 @@
 %>
     <form class="col-md-2" method="post" action="<%= request.getContextPath() %>/view-workspaceitem">
         <input type="hidden" name="workspace_id" value="<%= workspace_id.intValue() %>" />
-        <input class="btn btn-default" type="submit" name="submit_simple" value="<fmt:message key="jsp.display-item.text1"/>" />
+        <input class="btn btn-primary" type="submit" name="submit_simple" value="<fmt:message key="jsp.display-item.text1"/>" />
     </form>
 <%
         }
         else
         {
 %>
-    <a class="btn btn-default" href="<%=locationLink %>?mode=simple">
+    <a class="btn btn-primary" href="<%=locationLink %>?mode=simple">
         <fmt:message key="jsp.display-item.text1"/>
     </a>
 <%
@@ -226,14 +232,14 @@
 %>
     <form class="col-md-2" method="post" action="<%= request.getContextPath() %>/view-workspaceitem">
         <input type="hidden" name="workspace_id" value="<%= workspace_id.intValue() %>" />
-        <input class="btn btn-default" type="submit" name="submit_full" value="<fmt:message key="jsp.display-item.text2"/>" />
+        <input class="btn btn-primary" type="submit" name="submit_full" value="<fmt:message key="jsp.display-item.text2"/>" />
     </form>
 <%
         }
         else
         {
 %>
-    <a class="btn btn-default" href="<%=locationLink %>?mode=full">
+    <a class="btn btn-primary" href="<%=locationLink %>?mode=full">
         <fmt:message key="jsp.display-item.text2"/>
     </a>
 <%
@@ -259,6 +265,12 @@
         }
 %>
     <a class="statisticsLink  btn btn-primary" href="<%= request.getContextPath() %>/handle/<%= handle %>/statistics"><fmt:message key="jsp.display-item.display-statistics"/></a>
+
+<%if (!isAdmin) { %>
+<a class="btn btn-success" href="<%= request.getContextPath() %>/feedback?feedback=<fmt:message key="jsp.feedback.form.item-msg"/>
+%20http://hdl.handle.net/<%= handle %>" target="new_window">
+               <fmt:message key="jsp.display-item.feedback"/></a>
+<% } %>
 
     <%-- SFX Link --%>
 <%
@@ -324,6 +336,21 @@
     }
 %>
 <br/>
+<!-- && !isAdmin removed. sharing bar will appear even to the Administration zone -->
+<% if (ConfigurationManager.getBooleanProperty("sharing.active", false)) { %>
+	<% // code
+	SharingManager manager = new SharingManager(new ItemWrapper(item));
+	%>
+	     <div class="container well sharingbar" style="height: 35px; padding-left: 10px; padding-right:10px; padding-top:6px">
+	        <div class="left" style="float: left">
+			            <%= manager.getItemsAtLeft(request) %>
+			       </div>
+			        <div class="right" style="float: right">
+			            <%= manager.getItemsAtRight(request) %>
+			        </div>
+	        <div class="clear"></div>
+	    </div>
+	    <% } %>
     <%-- Create Commons Link --%>
 <%
     if (cc_url != null)
@@ -341,5 +368,5 @@
     <p class="submitFormHelp alert alert-info"><fmt:message key="jsp.display-item.copyright"/></p>
 <%
     } 
-%>    
+%>  
 </dspace:layout>

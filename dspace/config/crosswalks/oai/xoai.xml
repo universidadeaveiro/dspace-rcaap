@@ -82,6 +82,21 @@
                 This contexts complies with OpenAIRE rules.
             </Description>
         </Context>
+	    <!-- FCT FILTER -->         
+        <Context baseurl="fct" name="FCT Context">
+	    <!-- Date format, field prefixes, etc are ensured by the transformer -->
+	    <Transformer ref="openaireTransformer"/>
+	    <!-- OpenAIRE filter -->
+	    <Filter ref="fctFilter"/>
+	    <!-- Just an alias, in fact it returns all items within the driver context -->
+	    <Set ref="fctSet"/>
+	    <!-- Metadata Formats -->
+	    <Format ref="oaidc"/>
+	    <Format ref="mets"/>
+	    <Description>
+	        This contexts complies with FCT rules.
+	    </Description>
+	</Context>     
     </Contexts>
 
 
@@ -207,7 +222,7 @@
                                 <Custom ref="driverDocumentTypeCondition"/>
                             </LeftCondition>
                             <RightCondition>
-                                <And>
+                                 <And>
                                     <LeftCondition>
                                         <Or>
                                             <LeftCondition>
@@ -237,6 +252,7 @@
                * AND the OpenAIRE "dc.relation" is specified
              This filter is only used in the OpenAIRE context ([oai]/openaire).
         -->
+
         <Filter id="openAireFilter">
             <Definition>
                 <And>
@@ -291,7 +307,7 @@
             </Definition>
         </Filter>
 
-        <!-- Default filter for records returned by OAI-PMH. 
+    <!-- Default filter for records returned by OAI-PMH. 
              By default, return an Item record:
                 * If it is publicly accessible
                 * OR it has been withdrawn (in order to display a tombstone record).
@@ -309,6 +325,57 @@
                 </Or>
             </Definition>
         </Filter>
+        
+        <!-- FCT FILTER -->
+        <Filter id="fctFilter">
+                <Definition>
+                <And>
+                    <LeftCondition>
+                        <And>
+                            <LeftCondition>
+                                <Custom ref="titleExistsCondition"/>
+                            </LeftCondition>
+                            <RightCondition>
+                                <Custom ref="authorExistsCondition"/>
+                            </RightCondition>
+                        </And>
+                    </LeftCondition>
+                    <RightCondition>
+                        <And>
+                            <LeftCondition>
+                                <Custom ref="driverDocumentTypeCondition"/>
+                            </LeftCondition>
+                            <RightCondition>
+                                <And>
+                                    <LeftCondition>
+                                        <Or>
+                                            <LeftCondition>
+                                                <Custom ref="itemAccessCondition"/>
+                                            </LeftCondition>
+                                            <RightCondition>
+                                                <Custom ref="itemWithdrawnCondition"/>
+                                            </RightCondition>
+                                        </Or>
+                                    </LeftCondition>
+                                    <RightCondition>
+                                        <Custom ref="fctRelationCondition"/>
+                                    </RightCondition>
+                                </And>
+                            </RightCondition>
+                        </And>
+                    </RightCondition>
+                </And>
+            </Definition>
+        </Filter>
+        
+	    <CustomCondition id="fctRelationCondition">
+	            <Class>org.dspace.xoai.filter.DSpaceAtLeastOneMetadataFilter</Class>
+	            <Configuration>
+	                <string name="field">dc.relation</string>
+	                <string name="operator">starts_with</string>
+	                <string name="value">info:eu-repo/grantAgreement/FCT</string>
+	            </Configuration>
+        </CustomCondition>
 
         <!-- This condition determines if an Item has a "dc.type" field
              which contains "Thesis". -->
@@ -373,7 +440,7 @@
             <Configuration>
                 <string name="field">dc.rights</string>
                 <string name="operator">contains</string>
-                <list>
+                <list name="values">
                     <string>open access</string>
                     <string>openAccess</string>
                 </list>
@@ -400,7 +467,7 @@
             <Configuration>
                 <string name="field">dc.relation</string>
                 <string name="operator">starts_with</string>
-                <string name="value">info:eu-repo/grantAgreement/EC/FP</string>
+                <string name="value">info:eu-repo/grantAgreement</string>
             </Configuration>
         </CustomCondition>
     </Filters>
@@ -416,5 +483,12 @@
             <Name>EC_fundedresources set</Name>
             <!-- Just an alias -->
         </Set>
+        <!-- FCT FILTER -->
+        <Set id="fctSet">
+	       <Spec>fct_fundedresources</Spec>
+	       <Name>fct_fundedresources set</Name>
+	        <!-- Just an alias -->
+	   </Set>
+        
     </Sets>
 </Configuration>

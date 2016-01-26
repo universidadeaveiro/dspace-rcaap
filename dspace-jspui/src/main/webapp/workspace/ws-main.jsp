@@ -80,7 +80,7 @@
                     <input type="hidden" name="step" value="<%= MyDSpaceServlet.MAIN_PAGE %>"/>
                     <input type="hidden" name="workspace_id" value="<%= workspaceItem.getID() %>"/>
                     <input type="hidden" name="resume" value="<%= workspaceItem.getID() %>"/>
-                    <input class="col-md-2 btn btn-primary btn-group-justified" type="submit" name="submit_resume" value="<fmt:message key="jsp.workspace.ws-main.button.edit"/>"/>
+                    <input class="btn btn-primary btn-group-justified pull-left" type="submit" name="submit_resume" value="<fmt:message key="jsp.workspace.ws-main.button.edit"/>"/>
                 </form>
             </td>
             <td class="evenRowEvenCol">
@@ -92,7 +92,7 @@
             <td class="oddRowOddCol" align="center">
                 <form action="<%= request.getContextPath() %>/view-workspaceitem" method="post">
                    <input type="hidden" name="workspace_id" value="<%= workspaceItem.getID() %>"/>
-                   <input class="col-md-2 btn btn-default btn-group-justified" type="submit" name="submit_view" value="<fmt:message key="jsp.workspace.ws-main.button.view"/>"/>
+                   <input class="btn btn-default btn-group-justified pull-left" type="submit" name="submit_view" value="<fmt:message key="jsp.workspace.ws-main.button.view"/>"/>
                 </form>
             </td>
             <td class="oddRowEvenCol">
@@ -105,7 +105,7 @@
                 <form action="<%= request.getContextPath() %>/mydspace" method="post">
                     <input type="hidden" name="step" value="<%= MyDSpaceServlet.MAIN_PAGE %>"/>
                     <input type="hidden" name="workspace_id" value="<%= workspaceItem.getID() %>"/>
-                    <input class="col-md-2 btn btn-danger btn-group-justified" type="submit" name="submit_delete" value="<fmt:message key="jsp.workspace.ws-main.button.remove"/>"/>
+                    <input class="btn btn-danger btn-group-justified pull-left" type="submit" name="submit_delete" value="<fmt:message key="jsp.workspace.ws-main.button.remove"/>"/>
                 </form>
             </td>
             <td class="evenRowEvenCol">

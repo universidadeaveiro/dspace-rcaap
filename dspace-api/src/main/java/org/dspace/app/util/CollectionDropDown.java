@@ -23,8 +23,8 @@ public class CollectionDropDown {
     /**
      * Get full path starting from a top-level community via subcommunities down to a collection.
      * The full path will not be truncated.
-     * 
-     * @param col 
+     *
+     * @param col
      *            Get full path for this collection
      * @return Full path to the collection
      */
@@ -32,14 +32,14 @@ public class CollectionDropDown {
     {
         return CollectionDropDown.collectionPath(col, 0);
     }
-    
+
     /**
      * Get full path starting from a top-level community via subcommunities down to a collection.
      * The full cat will be truncated to the specified number of characters and prepended with an ellipsis.
-     * 
-     * @param col 
+     *
+     * @param col
      *            Get full path for this collection
-     * @param maxchars 
+     * @param maxchars
      *            Truncate the full path to maxchar characters. 0 means do not truncate.
      * @return Full path to the collection (truncated)
      */
@@ -50,15 +50,18 @@ public class CollectionDropDown {
         {
             separator = " > ";
         }
-        
-        Community[] getCom = null;
+
+        /* FR: Remove communities showing in the drop down box - request by repositories administrators*/
+        StringBuffer name = new StringBuffer("");
+        /*Community[] getCom = null;
         StringBuffer name = new StringBuffer("");
         getCom = col.getCommunities(); // all communities containing given collection
         for (Community com : getCom)
         {
             name.insert(0, com.getMetadata("name") + separator);
         }
-
+		//END OF REMOVING Communities
+		*/
         name.append(col.getMetadata("name"));
 
         if (maxchars != 0)

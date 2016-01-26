@@ -228,10 +228,10 @@ public class DiscoverQuery {
         this.searchFields.add(field);
     }
 
-    /**
-     * Get list of fields which Discovery will return in the search results
-     * @return List of field names
-     */
+   /**
+    * Get list of fields which Discovery will return in the search results
+    * @return List of field names
+    */
     public List<String> getSearchFields() {
         return searchFields;
     }

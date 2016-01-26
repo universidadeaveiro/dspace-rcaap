@@ -26,7 +26,7 @@ import org.dspace.core.Context;
  * Class for managing the content event environment. The EventManager mainly
  * acts as a factory for Dispatchers, which are used by the Context to send
  * events to consumers. It also contains generally useful utility methods.
- * 
+ *
  * Version: $Revision$
  */
 public class EventManager
@@ -284,22 +284,27 @@ public class EventManager
         {
             Context ctx = new Context();
 
+            //for (Iterator ci = ((Dispatcher) dispatcher).getConsumers()
+            //        .iterator(); ci.hasNext();)
+            //{
+            //    ConsumerProfile cp = (ConsumerProfile) ci.next();
+            //    if (cp != null)
             try {
+					for (Iterator ci = ((Dispatcher) dispatcher).getConsumers()
+			                        .iterator(); ci.hasNext();)
+                	{
+                		//    cp.getConsumer().finish(ctx);
+						ConsumerProfile cp = (ConsumerProfile) ci.next();
+						if (cp != null)
+						{
+							cp.getConsumer().finish(ctx);
+						}
+                	}
 
-                for (Iterator ci = ((Dispatcher) dispatcher).getConsumers()
-                        .iterator(); ci.hasNext();)
-                {
-                    ConsumerProfile cp = (ConsumerProfile) ci.next();
-                    if (cp != null)
-                    {
-                        cp.getConsumer().finish(ctx);
-                    }
-                }
+				ctx.complete();
 
-                ctx.complete();
-
-            } catch (Exception e) {
-                ctx.abort();
+			} catch (Exception e) {
+				ctx.abort();
                 throw e;
             }
             return;
@@ -323,9 +328,9 @@ public class EventManager
          * Looks through the configuration for dispatcher configurations and
          * loads one of each into a HashMap. This Map will be used to clone new
          * objects when the pool needs them.
-         * 
+         *
          * Looks for configuration properties like:
-         * 
+         *
          * <pre>
          *  # class of dispatcher &quot;default&quot;
          *  event.dispatcher.default = org.dspace.event.BasicDispatcher
@@ -336,7 +341,7 @@ public class EventManager
          *  org.dspace.event.TestConsumer:all+all, \
          *  org.dspace.eperson.SubscribeConsumer:Item+CREATE|DELETE:Collection+ADD, ...
          * </pre>
-         * 
+         *
          */
         private void parseEventConfig()
         {

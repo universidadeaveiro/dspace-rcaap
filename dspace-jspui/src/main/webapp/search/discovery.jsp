@@ -199,6 +199,8 @@
 	<p class="lead"><fmt:message key="jsp.search.didyoumean"><fmt:param><a id="spellCheckQuery" data-spell="<%= Utils.addEntities(spellCheckQuery) %>" href="#"><%= spellCheckQuery %></a></fmt:param></fmt:message></p>
 <% } %>                  
                                 <input type="hidden" value="<%= rpp %>" name="rpp" />
+                                <%--<input type="hidden" value="<%= sortedBy %>" name="sort_by" />
+                                <input type="hidden" value="<%= order %>" name="order" />--%>
                                 <input type="hidden" value="<%= Utils.addEntities(sortedBy) %>" name="sort_by" />
                                 <input type="hidden" value="<%= Utils.addEntities(order) %>" name="order" />
 <% if (appliedFilters.size() > 0 ) { %>                                
@@ -214,6 +216,7 @@
 				<%
 					for (DiscoverySearchFilter searchFilter : availableFilters)
 					{
+					    //String fkey = "jsp.search.filter."+searchFilter.getIndexFieldName();
 					    String fkey = "jsp.search.filter." + Escape.uriParam(searchFilter.getIndexFieldName());
 					    %><option value="<%= Utils.addEntities(searchFilter.getIndexFieldName()) %>"<% 
 					            if (filter[0].equals(searchFilter.getIndexFieldName()))
@@ -225,6 +228,7 @@
 					}
 					if (!found)
 					{
+					    //String fkey = "jsp.search.filter."+filter[0];
 					    String fkey = "jsp.search.filter." + Escape.uriParam(filter[0]);
 					    %><option value="<%= Utils.addEntities(filter[0]) %>" selected="selected"><fmt:message key="<%= fkey %>"/></option><%
 					}
@@ -234,6 +238,7 @@
 				<%
 					for (String opt : options)
 					{
+					    //String fkey = "jsp.search.filter.op."+opt;
 					    String fkey = "jsp.search.filter.op." + Escape.uriParam(opt);
 					    %><option value="<%= Utils.addEntities(opt) %>"<%= opt.equals(filter[1])?" selected=\"selected\"":"" %>><fmt:message key="<%= fkey %>"/></option><%
 					}
@@ -275,6 +280,8 @@
 		<%
 			for (DiscoverySearchFilter searchFilter : availableFilters)
 			{
+			    //String fkey = "jsp.search.filter."+searchFilter.getIndexFieldName();
+			    
 			    String fkey = "jsp.search.filter." + Escape.uriParam(searchFilter.getIndexFieldName());
 			    %><option value="<%= Utils.addEntities(searchFilter.getIndexFieldName()) %>"><fmt:message key="<%= fkey %>"/></option><%
 			}
@@ -284,6 +291,8 @@
 		<%
 			for (String opt : options)
 			{
+			    //String fkey = "jsp.search.filter.op."+opt;
+			    
 			    String fkey = "jsp.search.filter.op." + Escape.uriParam(opt);
 			    %><option value="<%= Utils.addEntities(opt) %>"><fmt:message key="<%= fkey %>"/></option><%
 			}
@@ -291,6 +300,8 @@
 		</select>
 		<input type="text" id="filterquery" name="filterquery" size="45" required="required" />
 		<input type="hidden" value="<%= rpp %>" name="rpp" />
+		<!--<input type="hidden" value="<%= sortedBy %>" name="sort_by" />
+		<input type="hidden" value="<%= order %>" name="order" />-->
 		<input type="hidden" value="<%= Utils.addEntities(sortedBy) %>" name="sort_by" />
 		<input type="hidden" value="<%= Utils.addEntities(order) %>" name="order" />
 		<input class="btn btn-default" type="submit" value="<fmt:message key="jsp.search.filter.add"/>" onclick="return validateFilters()" />
@@ -339,6 +350,8 @@
                for (String sortBy : sortOptions)
                {
                    String selected = (sortBy.equals(sortedBy) ? "selected=\"selected\"" : "");
+                   //String mKey = "search.sort-by." + sortBy;
+                  
                    String mKey = "search.sort-by." + Utils.addEntities(sortBy);
                    %> <option value="<%= Utils.addEntities(sortBy) %>" <%= selected %>><fmt:message key="<%= mKey %>"/></option><%
                }
@@ -487,7 +500,7 @@ else if( qResults != null)
 	
 	if (pageFirst != 1)
 	{
-	    %><li><a href="<%= firstURL %>">1</a></li><li class="disabled"><span>...</span></li><%
+	    %><li><a href="<%= firstURL %>">1</a></li><li>...</li><%
 	}
 	
 	for( long q = pageFirst; q <= pageLast; q++ )
@@ -577,7 +590,7 @@ else
 
 if (pageFirst != 1)
 {
-    %><li><a href="<%= firstURL %>">1</a></li><li class="disabled"><span>...</span></li><%
+    %><li><a href="<%= firstURL %>">1</a></li><li class="disabled"><span>...<span></li><%
 }
 
 for( long q = pageFirst; q <= pageLast; q++ )
@@ -677,7 +690,7 @@ else
 	    int limit = facetConf.getFacetLimit()+1;
 	    
 	    String fkey = "jsp.search.facet.refine."+f;
-	    %><div id="facet_<%= f %>" class="panel panel-success">
+	    %><div id="facet_<%= f %>" class="panel panel-default">
 	    <div class="panel-heading"><fmt:message key="<%= fkey %>" /></div>
 	    <ul class="list-group"><%
 	    int idx = 1;
@@ -728,7 +741,7 @@ else
             <% } %>
             <% if (idx == limit) { %>
             <a href="<%= request.getContextPath()
-	            + (!searchScope.equals("")?"/handle/"+searchScope:"")
+            	+ (!searchScope.equals("")?"/handle/"+searchScope:"")
                 + "/simple-search?query="
                 + URLEncoder.encode(query,"UTF-8")
                 + "&amp;sort_by=" + sortedBy

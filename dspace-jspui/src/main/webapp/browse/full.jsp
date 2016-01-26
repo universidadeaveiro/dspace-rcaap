@@ -27,6 +27,9 @@
 <%@ page import="org.dspace.content.DCDate" %>
 <%@ page import="org.dspace.app.webui.util.UIUtil" %>
 
+<%@ page import="org.dspace.core.Utils" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <%
     request.setAttribute("LanguageSwitch", "hide");
 
@@ -78,6 +81,9 @@
 	}
 	
 	type = bix.getName();
+	%>
+		<c:set var="typea" scope="page" value="<%= type %>"/>
+	<%
 	
 	// next and previous links are of the form:
 	// [handle/<prefix>/<suffix>/]browse?type=<type>&sort_by=<sort_by>&order=<order>[&value=<value>][&rpp=<rpp>][&[focus=<focus>|vfocus=<vfocus>]
@@ -177,7 +183,19 @@
 
 	<%-- Build the header (careful use of spacing) --%>
 	<h2>
-		<fmt:message key="browse.full.header"><fmt:param value="<%= scope %>"/></fmt:message> <fmt:message key="<%= typeKey %>"/> <%= value %>
+		<%-- Build the header (careful use of spacing) --%> 
+<h2>
+    <c:choose>
+    <c:when test="${typea == 'type'}" ><%
+        String typemessage = "document.type." + value; %>
+        <fmt:message key="browse.full.header"><fmt:param value="<%= scope %>"/></fmt:message> <fmt:message key="<%= typeKey %>"/>: <fmt:message key="<%= Utils.addEntities(typemessage) %>"/>
+     </c:when>
+     <c:otherwise>
+        <fmt:message key="browse.full.header"><fmt:param value="<%= scope %>"/></fmt:message> <fmt:message key="<%= typeKey %>"/> <%= value %>
+     </c:otherwise>
+    </c:choose>
+</h2>
+<!--		<fmt:message key="browse.full.header"><fmt:param value="<%= scope %>"/></fmt:message> <fmt:message key="<%= typeKey %>"/> <%= value %> -->
 	</h2>
 
 	<%-- Include the main navigation for all the browse pages --%>

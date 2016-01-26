@@ -1,0 +1,15 @@
+# E-mail sent to DSpace users when they register for an account
+#
+# Parameters: {0} is expanded to a special registration URL
+#
+# See org.dspace.core.Email for information on the format of this file.
+#
+Subject: Registo no Repositório
+Para finalizar o registo no Repositório, clique no seguinte endereço:
+
+ {0}
+
+Obrigado,
+
+A Equipa do Repositório
+

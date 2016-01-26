@@ -127,10 +127,11 @@
   </filter-mapping>
  
 
+  
   <!--
-       DSpace Kernel startup listener. This listener is in charge of initializing/starting the
-       DSpace Kernel. It MUST be listed BEFORE any other DSpace listeners, as DSpace services
-       will not function until the Kernel is initialized.
+         DSpace Kernel startup listener. This listener is in charge of initializing/starting the
+         DSpace Kernel. It MUST be listed BEFORE any other DSpace listeners, as DSpace services
+         will not function until the Kernel is initialized.
   -->
   <listener>
      <listener-class>org.dspace.servicemanager.servlet.DSpaceKernelServletContextListener</listener-class>
@@ -493,8 +494,29 @@
     <servlet-name>shibboleth-login</servlet-name>
     <url-pattern>/shibboleth-login</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+      <servlet-name>sharing</servlet-name>
+      <servlet-class>pt.keep.dspace.sharing.SharingServlet</servlet-class>
+</servlet>
+ 
+ <servlet>
+ 	    <servlet-name>item-handle</servlet-name>
+ 	    <servlet-class>org.dspace.app.webui.servlet.ItemHandleServlet</servlet-class>
+</servlet>
  
   <!-- Servlet Mappings -->
+  
+  <servlet-mapping>
+      <servlet-name>sharing</servlet-name>
+      <url-pattern>/sharing</url-pattern>
+</servlet-mapping>
+
+<servlet-mapping>
+          <servlet-name>item-handle</servlet-name>
+          <url-pattern>/item-handle/*</url-pattern>
+        </servlet-mapping>
+
 
   <servlet-mapping>
     <servlet-name>authorize</servlet-name>

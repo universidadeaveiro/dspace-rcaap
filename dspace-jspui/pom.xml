@@ -13,7 +13,7 @@
    <parent>
       <groupId>org.dspace</groupId>
       <artifactId>dspace-parent</artifactId>
-      <version>5.4</version>
+      <version>5.2</version>
       <relativePath>..</relativePath>
    </parent>
 
@@ -92,6 +92,18 @@
     </profiles>
 
     <dependencies>
+    	<dependency>
+		<groupId>commons-httpclient</groupId>
+		<artifactId>commons-httpclient</artifactId>
+		<version>3.1</version>
+	</dependency>
+		
+		<!-- DEGOIS -->
+		<dependency>
+	            <groupId>rcaap</groupId>
+	            <artifactId>degois</artifactId>
+	            <version>3.0</version>
+	        </dependency>
         <dependency>
             <groupId>org.dspace</groupId>
             <artifactId>dspace-api</artifactId>

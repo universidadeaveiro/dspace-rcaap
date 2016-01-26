@@ -1,0 +1,332 @@
+//colors
+$color-mountain_mist_approx: #999;
+$white: #fff;
+$color_hot_cinnamon_approx: rgb(217, 108, 39);
+$color_cape_cod_approx: rgb(66, 66, 66);
+$color_gray_approx: rgb(129, 129, 131);
+$gray: gray;
+$color_apple_approx: #47a447;
+$color_storm_dust_approx: #666;
+$color_mine_shaft_approx: #333;
+
+//urls
+$url_0: url(../../../image/authority/bug.png);
+$url_1: url(../../../image/confidence/0-unauthored.gif);
+$url_2: url(../../../image/confidence/2-errortriangle.gif);
+$url_3: url(../../../image/confidence/3-thumb1.gif);
+$url_4: url(../../../image/confidence/4-question.gif);
+$url_5: url(../../../image/confidence/5-pinion.gif);
+$url_6: url(../../../image/confidence/6-greencheck.gif);
+$url_7: url(../../../image/lock24.png);
+$url_8: url(../../../image/unlock24.png);
+
+//@extend-elements
+//original selectors
+//img.ds-authority-confidence, span.ds-authority-confidence
+%extend_1 {
+	width: 16px;
+	height: 16px;
+	margin: 5px;
+	background-repeat: no-repeat;
+	padding: 0 2px;
+	vertical-align: bottom;
+	color: transparent;
+}
+
+.brand {
+	margin: 30px 0;
+	h4 {
+		color: $color_mountain_mist_approx;
+	}
+}
+.search {
+	padding-top: 50px;
+}
+
+#content {
+	background: $white url(/image/pg_bck.png) no-repeat bottom right; //customizado DSPACE;
+	padding-top: 30px;
+	}
+
+#footer_feedback {
+	padding-top: 12px;
+}
+footer {
+	padding: 30px 0;
+}
+input[type="file"] {
+	display: block;
+	height: auto;
+}
+div {
+	&.tagcloud {
+		width: 100%;
+		text-align: center;
+		.tagcloud_1 {
+			color: $color_hot_cinnamon_approx;
+			font-weight: normal;
+			margin-right: 5px;
+		}
+		.tagcloud_2 {
+			color: $color_cape_cod_approx;
+			font-weight: normal;
+			margin-right: 5px;
+		}
+		.tagcloud_3 {
+			color: $color_gray_approx;
+			font-weight: normal;
+			margin-right: 5px;
+		}
+	}
+	&.batchimport-info {
+		color: $gray;
+		a {
+			color: $color_apple_approx;
+			font-weight: bold;
+		}
+	}
+	// &.panel-primary div.panel-heading a {
+	// 	color: $white;
+	// }
+}
+span {
+	&.ds-authority-confidence {
+		@extend %extend_1;
+		&.cf-unset {
+			background-image: $url_0;
+		}
+		&.cf-novalue {
+			background-image: $url_1;
+		}
+		&.cf-rejected {
+			background-image: $url_2;
+		}
+		&.cf-failed {
+			background-image: $url_2;
+		}
+		&.cf-notfound {
+			background-image: $url_3;
+		}
+		&.cf-ambiguous {
+			background-image: $url_4;
+		}
+		&.cf-uncertain {
+			background-image: $url_5;
+		}
+		&.cf-accepted {
+			background-image: $url_6;
+		}
+	}
+	&.batchimport-error-tab {
+		padding-left: 10px;
+	}
+	&.batchimport-error-caused {
+		font-weight: bold;
+	}
+}
+input {
+	&.ds-authority-value {
+		display: none;
+	}
+	&.ds-authority-lock {
+		vertical-align: bottom;
+		height: 24px;
+		width: 24px;
+		margin-right: 8px;
+		background-repeat: no-repeat;
+		background-color: transparent;
+		&.is-locked {
+			background-image: $url_7;
+		}
+		&.is-unlocked {
+			background-image: $url_8;
+		}
+	}
+}
+.browse_range {
+	text-align: center;
+}
+.prev-next-links {
+	text-align: center;
+}
+.copyright {
+	margin: 10px 0 40px 0;
+	color: $color_storm_dust_approx;
+	> li {
+		padding-right: 30px;
+	}
+}
+.carousel-inner {
+	h4 {
+		color: $color_mine_shaft_approx;
+		display: inline;
+		font-size: 14px;
+		font-weight: bold;
+	}
+	
+	p {
+		margin-top: 10px;
+	}
+}
+ol.breadcrumb li {
+	color: $gray;
+	font-style: italic;
+	a {
+		color: $gray;
+		font-weight: bold;
+		font-style: normal;
+	}
+}
+body.undernavigation {
+	overflow-x: hidden;
+//	padding-top: 50px;
+}
+img.ds-authority-confidence {
+	@extend %extend_1;
+	&.cf-unset {
+		background-image: $url_0;
+	}
+	&.cf-novalue {
+		background-image: $url_1;
+	}
+	&.cf-rejected {
+		background-image: $url_2;
+	}
+	&.cf-failed {
+		background-image: $url_2;
+	}
+	&.cf-notfound {
+		background-image: $url_3;
+	}
+	&.cf-ambiguous {
+		background-image: $url_4;
+	}
+	&.cf-uncertain {
+		background-image: $url_5;
+	}
+	&.cf-accepted {
+		background-image: $url_6;
+	}
+}
+p.recentItem {
+    border-bottom: solid 1px #EEE;
+    padding-bottom: 10px;
+}
+.label-required:after {
+	content: " *";
+}
+
+//  Adicionei algumas classes para promotores e financiadores
+
+.promotors, .sponsors {
+	& > a {
+		margin-right: 30px;
+	}
+}
+
+.sponsors {
+	padding-left: 64px;
+}
+
+.sponsors, .promotors {
+	p {
+		color: #999;
+		font-size: 0.75em;
+	}	
+}
+
+// Media query para modficiar espaçamento em viewports <768px
+
+ @media screen and (max-width: 768px) {
+	.sponsors {
+		margin-top: 20px;
+		padding-left: 20px;
+
+	}
+  }
+
+.footer-custom-rcaap {
+    margin-top: 30px;
+}
+
+//  Banner for Open Access Week
+
+.banner-oaw {
+    border-top: solid 1px #a8a8a8; 
+    border-bottom: solid 1px #a8a8a8;
+    padding: 30px 0;
+    background-color: #FFF;
+
+    a {
+        color: #a8a8a8;
+    }
+}
+
+// For the collapse structure
+.paneltitle > a:before {
+        font-family: "Glyphicons Halflings";
+        content: "\2212";
+        //color: blue;
+}
+.paneltitle > a.collapsed:before {
+        font-family: "Glyphicons Halflings";
+        content: "\2b";
+        //color: blue;
+}
+
+ul[class^="comTop"]{
+        height: 0px;
+}
+
+span.paneltitle{
+        float:right;
+        font-size: 13px;
+}
+
+.paneltitle > a {
+        text-decoration: none; 
+        padding-top: 6px;     
+}
+
+/*
+UMINHO STATS
+*/
+.dropdown-submenu > a::after {
+    border-color: transparent transparent transparent #cccccc;
+    border-style: solid;
+    border-width: 5px 0 5px 5px;
+    content: " ";
+    display: block;
+    float: right;
+    height: 0;
+    margin-right: -10px;
+    margin-top: 5px;
+    width: 0;
+}
+
+.dropdown-submenu > .dropdown-menu {
+    top: 0px;
+    left: 100%;
+    margin-top: -6px;
+    margin-left: -1px;
+    border-radius: 0px 6px 6px;
+}
+
+.dropdown-submenu {
+    position: relative;
+}
+
+
+.dropdown-submenu:hover > .dropdown-menu { 
+	display: block;
+}
+
+.dropdown-submenu > .dropdown-menu { 
+	top: 0; 
+	left: 100%;
+	margin-top: -6px; 
+	margin-left: -1px; 
+	-webkit-border-radius: 0 6px 6px 6px; 
+	-moz-border-radius: 0 6px 6px 6px; 
+	border-radius: 0 6px 6px 6px;
+ }

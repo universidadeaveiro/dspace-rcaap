@@ -14,6 +14,9 @@ import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.tagext.BodyContent;
 import javax.servlet.jsp.tagext.BodyTagSupport;
 
+import java.util.Locale;
+import org.dspace.app.webui.util.UIUtil;
+
 /**
  * Tag for producing a popup window link. Takes advantage of Javascript to
  * produce a small window that is brought to the front every time a popup link
@@ -83,6 +86,13 @@ public class PopupTag extends BodyTagSupport
 
         HttpServletRequest hrq = (HttpServletRequest) pageContext.getRequest();
         String actualPage = hrq.getContextPath() + page;
+
+	//Adding the possibility of multiple languages in help
+	if(actualPage.contains("help")){
+    		Locale sessionLocale = UIUtil.getSessionLocale(hrq);
+    		String lang =  sessionLocale.getLanguage().toString();
+    		actualPage = lang != "en" ? actualPage.replace("help","help_" + lang) : actualPage;
+	}
 
         String html = "<script type=\"text/javascript\">\n"
                 + "<!-- Javascript starts here\n"

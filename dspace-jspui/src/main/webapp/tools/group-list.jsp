@@ -25,6 +25,7 @@
 
 <%@ page import="javax.servlet.jsp.jstl.fmt.LocaleSupport" %>
 
+<%@ page import="java.util.*" %>
 <%@ page import="org.dspace.eperson.EPerson" %>
 <%@ page import="org.dspace.eperson.Group" %>
 
@@ -66,6 +67,16 @@
 
 <%
     String row = "even";
+    
+    //FIXME - PG: added this block of code to support alphabetic ordering of groups - this should be done in the proper class
+        List<Group> list = Arrays.asList(groups);
+    
+        Collections.sort(list, new Comparator<Group>() {
+        public int compare(Group g1, Group g2)
+        {
+            return g1.getName().compareToIgnoreCase(g2.getName()); // Compare by name
+        }});
+    
     for (int i = 0; i < groups.length; i++)
     {
 %>

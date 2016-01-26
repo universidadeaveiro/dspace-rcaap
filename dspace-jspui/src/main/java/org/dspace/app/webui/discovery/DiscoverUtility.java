@@ -41,10 +41,10 @@ public class DiscoverUtility
 
     public static final int TYPE_FACETS = 1;
     public static final int TYPE_TAGCLOUD = 2;
-    
+
     /**
      * Get the scope of the search using the parameter found in the request.
-     * 
+     *
      * @param context
      * @param request
      * @throws IllegalStateException
@@ -74,7 +74,7 @@ public class DiscoverUtility
 
     /**
      * Build a DiscoverQuery object using the parameter in the request
-     * 
+     *
      * @param request
      * @return the query.
      * @throws SearchServiceException
@@ -105,7 +105,7 @@ public class DiscoverUtility
 
     /**
      * Build a DiscoverQuery object using the tag cloud parameter in the request
-     * 
+     *
      * @param request
      * @return the query.
      * @throws SearchServiceException
@@ -133,11 +133,11 @@ public class DiscoverUtility
 
         return queryArgs;
     }
-    
+
     /**
      * Build the DiscoverQuery object for an autocomplete search using
      * parameters in the request
-     * 
+     *
      * @param context
      * @param request
      * @param scope
@@ -148,7 +148,7 @@ public class DiscoverUtility
     {
         DiscoverQuery queryArgs = new DiscoverQuery();
         DiscoveryConfiguration discoveryConfiguration = SearchUtils.getDiscoveryConfiguration();
-        
+
         setupBasicQuery(context, discoveryConfiguration, request, queryArgs);
         String autoIndex = request.getParameter("auto_idx");
         String autoQuery = request.getParameter("auto_query");
@@ -178,11 +178,11 @@ public class DiscoverUtility
                 sortBy = DiscoveryConfigurationParameters.SORT.VALUE;
             }
         }
-        // no user choices... default for autocomplete should be alphabetic 
+        // no user choices... default for autocomplete should be alphabetic
         // sorting in all cases except empty query where count is preferable
         else if ("".equals(autoQuery))
         {
-           sortBy = DiscoveryConfigurationParameters.SORT.COUNT; 
+           sortBy = DiscoveryConfigurationParameters.SORT.COUNT;
         }
         if (autoIndex == null)
         {
@@ -192,14 +192,14 @@ public class DiscoverUtility
         {
             autoQuery = "";
         }
-        
+
         int limit = UIUtil.getIntParameter(request, "autocomplete.limit");
         if (limit == -1)
         {
             limit = 10;
         }
-        DiscoverFacetField autocompleteField = new DiscoverFacetField(autoIndex, 
-                autoType, 
+        DiscoverFacetField autocompleteField = new DiscoverFacetField(autoIndex,
+                autoType,
                 limit, sortBy, autoQuery.toLowerCase());
         queryArgs.addFacetField(autocompleteField);
         queryArgs.setMaxResults(0);
@@ -210,7 +210,7 @@ public class DiscoverUtility
     /**
      * Setup the basic query arguments: the main query and all the filters
      * (default + user). Return the list of user filter
-     * 
+     *
      * @param context
      * @param request
      * @param queryArgs
@@ -225,7 +225,8 @@ public class DiscoverUtility
         String query = request.getParameter("query");
         if (StringUtils.isNotBlank(query))
         {
-            // Escape any special characters in this user-entered query
+			// Escape any special characters in this user-entered query
+			//query = SearchUtils.getSearchService().escapeQueryChars(query);
             query = escapeQueryChars(query);
             queryArgs.setQuery(query);
         }
@@ -281,6 +282,7 @@ public class DiscoverUtility
     {
         return StringUtils.replace(query, ": ", "\\: ");
     }
+
 
     private static void setPagination(HttpServletRequest request,
             DiscoverQuery queryArgs,
@@ -389,7 +391,7 @@ public class DiscoverUtility
             DiscoveryConfiguration discoveryConfiguration,
             List<String> userFilters, List<DiscoverySearchFilterFacet> facets, int type)
     {
-  
+
         log.info("facets for scope, " + scope + ": "
                 + (facets != null ? facets.size() : null));
         if (facets != null)
@@ -662,9 +664,9 @@ public class DiscoverUtility
                     if (type==TYPE_FACETS){
                     	limit = facetLimit + 1 + alreadySelected;
                     }
-                    else 
+                    else
                     	limit = facetLimit;
-                    
+
                     queryArgs.addFacetField(new DiscoverFacetField(facet
                             .getIndexFieldName(),
                             DiscoveryConfigurationParameters.TYPE_TEXT,
@@ -684,7 +686,7 @@ public class DiscoverUtility
             ignore = Integer.parseInt(submit.substring("submit_filter_remove_".length()));
         }
         List<String[]> appliedFilters = new ArrayList<String[]>();
-        
+
         List<String> filterValue = new ArrayList<String>();
         List<String> filterOp = new ArrayList<String>();
         List<String> filterField = new ArrayList<String>();
@@ -702,7 +704,7 @@ public class DiscoverUtility
                 filterValue.add(request.getParameter("filter_value_"+idx));
             }
         }
-        
+
         String op = request.getParameter("filtertype");
         if (StringUtils.isNotBlank(op))
         {
@@ -710,7 +712,7 @@ public class DiscoverUtility
             filterField.add(request.getParameter("filtername"));
             filterValue.add(request.getParameter("filterquery"));
         }
-        
+
         for (int idx = 0; idx < filterOp.size(); idx++)
         {
             appliedFilters.add(new String[] { filterField.get(idx),

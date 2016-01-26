@@ -29,7 +29,7 @@ public interface SearchService {
      * Convenient method to call @see #search(Context, DSpaceObject,
      * DiscoverQuery) with a null DSpace Object as scope (i.e. all the
      * repository)
-     * 
+     *
      * @param context
      *            DSpace Context object.
      * @param query
@@ -42,7 +42,7 @@ public interface SearchService {
     /**
      * Convenient method to call @see #search(Context, DSpaceObject,
      * DiscoverQuery, boolean) with includeWithdrawn=false
-     * 
+     *
      * @param context
      *            DSpace Context object
      * @param dso
@@ -56,7 +56,7 @@ public interface SearchService {
             throws SearchServiceException;
 
     /**
-     * 
+     *
      * @param context
      *            DSpace Context object.
      * @param query
@@ -70,7 +70,7 @@ public interface SearchService {
             boolean includeWithdrawn) throws SearchServiceException;
 
     /**
-     * 
+     *
      * @param context
      *            DSpace Context object
      * @param dso
@@ -81,12 +81,12 @@ public interface SearchService {
      * @param includeWithdrawn
      *            use <code>true</code> to include in the results also withdrawn
      *            items that match the query
-     * 
+     *
      * @throws SearchServiceException
      */
     DiscoverResult search(Context context, DSpaceObject dso, DiscoverQuery query, boolean includeWithdrawn) throws SearchServiceException;
 
-    
+
     InputStream searchJSON(Context context, DiscoverQuery query, String jsonIdentifier) throws SearchServiceException;
 
     InputStream searchJSON(Context context, DiscoverQuery query, DSpaceObject dso, String jsonIdentifier) throws SearchServiceException;
@@ -114,10 +114,10 @@ public interface SearchService {
      */
     String toSortFieldIndex(String metadataField, String type);
 
-    /**
-     * Utility method to escape any special characters in a user's query
-     * @param query
-     * @return query with any special characters escaped
-     */
+     /**
+	     * Utility method to escape any special characters in a user's query
+	     * @param query
+	     * @return query with any special characters escaped
+	     */
     String escapeQueryChars(String query);
 }

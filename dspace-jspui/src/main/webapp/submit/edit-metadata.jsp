@@ -394,8 +394,24 @@
             dateIssued = new org.dspace.content.DCDate("");
     
          sb.append("<div class=\"row col-md-12\"><div class=\"input-group col-md-10\"><div class=\"row\">")
-			.append("<span class=\"input-group col-md-6\"><span class=\"input-group-addon\">")
-         	.append(LocaleSupport.getLocalizedMessage(pageContext, "jsp.submit.edit-metadata.month"))
+         .append("<span class=\"input-group col-md-2\"><span class=\"input-group-addon\">")
+                  .append(LocaleSupport.getLocalizedMessage(pageContext, "jsp.submit.edit-metadata.day"))
+                  .append("</span><input class=\"form-control\" type=\"text\" name=\"")
+              .append(fieldName)
+              .append("_day");
+           if (repeatable && i>0)
+              sb.append("_").append(i);
+           if (readonly)
+           {
+               sb.append("\" disabled=\"disabled");
+           }
+           sb.append("\" size=\"2\" maxlength=\"2\" value=\"")
+              .append((dateIssued.getDay() > 0 ?
+                     String.valueOf(dateIssued.getDay()) : "" ))
+        
+        
+   .append("\"/></span><span class=\"input-group col-md-6\"><span class=\"input-group-addon\">")
+          .append(LocaleSupport.getLocalizedMessage(pageContext, "jsp.submit.edit-metadata.month"))
             .append("</span><select class=\"form-control\" name=\"")
             .append(fieldName)
             .append("_month");
@@ -413,7 +429,7 @@
             .append(">")
             .append(LocaleSupport.getLocalizedMessage(pageContext, "jsp.submit.edit-metadata.no_month"))
             .append("</option>");
-            
+           
          for (int j = 1; j < 13; j++)
          {
             sb.append("<option value=\"")
@@ -423,23 +439,10 @@
               .append(org.dspace.content.DCDate.getMonthName(j,I18nUtil.getSupportedLocale(request.getLocale())))
               .append("</option>");
          }
-    
+   
          sb.append("</select></span>")
-	            .append("<span class=\"input-group col-md-2\"><span class=\"input-group-addon\">")
-                .append(LocaleSupport.getLocalizedMessage(pageContext, "jsp.submit.edit-metadata.day"))
-                .append("</span><input class=\"form-control\" type=\"text\" name=\"")
-            .append(fieldName)
-            .append("_day");
-         if (repeatable && i>0)
-            sb.append("_").append(i);
-         if (readonly)
-         {
-             sb.append("\" disabled=\"disabled");
-         }
-         sb.append("\" size=\"2\" maxlength=\"2\" value=\"")
-            .append((dateIssued.getDay() > 0 ?
-                     String.valueOf(dateIssued.getDay()) : "" ))
-                .append("\"/></span><span class=\"input-group col-md-4\"><span class=\"input-group-addon\">")
+            
+                .append("<span class=\"input-group col-md-4\"><span class=\"input-group-addon\">")
                 .append(LocaleSupport.getLocalizedMessage(pageContext, "jsp.submit.edit-metadata.year"))
                 .append("</span><input class=\"form-control\" type=\"text\" name=\"")
             .append(fieldName)

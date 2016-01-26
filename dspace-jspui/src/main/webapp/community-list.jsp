@@ -58,10 +58,24 @@
         Bitstream logo = c.getLogo();
         if (showLogos && logo != null)
         {
-        	out.println("<a class=\"pull-left col-md-2\" href=\"" + request.getContextPath() + "/handle/" 
+        	out.println("<a class=\"pull-left col-md-1\" href=\"" + request.getContextPath() + "/handle/" 
         		+ c.getHandle() + "\"><img class=\"media-object img-responsive\" src=\"" + 
         		request.getContextPath() + "/retrieve/" + logo.getID() + "\" alt=\"community logo\"></a>");
         }
+
+        //FR: Change - pushed up the cols and comms
+        Collection[] cols = (Collection[]) collectionMap.get(c.getID());
+        Community[] comms = (Community[]) subcommunityMap.get(c.getID());
+
+        if (cols != null && cols.length > 0 || (comms!= null && comms.length > 0))
+        {
+
+        //FR - Collapse collections 
+        out.print("<span class=\"paneltitle\"><a class=\"collapsed label label-default\" href=\"javascript:void(0)\" data-toggle=\"collapse\" data-target=\"."+c.getHandle().replaceAll("(.*)/","comTop")+"\"> </a></span>");
+        }
+        //End Change
+
+
         out.println( "<div class=\"media-body\"><h4 class=\"media-heading\"><a href=\"" + request.getContextPath() + "/handle/" 
         	+ c.getHandle() + "\">" + c.getMetadata("name") + "</a>");
         if(ConfigurationManager.getBooleanProperty("webui.strengths.show"))
@@ -73,12 +87,21 @@
 		{
 			out.println(c.getMetadata("short_description"));
 		}
-		out.println("<br>");
+		
+
+        out.println("<br>");
         // Get the collections in this community
-        Collection[] cols = (Collection[]) collectionMap.get(c.getID());
+        
+        //FR: Change
+        //Collection[] cols = (Collection[]) collectionMap.get(c.getID());
         if (cols != null && cols.length > 0)
         {
-            out.println("<ul class=\"media-list\">");
+
+        //FR - Change
+            out.println("<ul class=\""+c.getHandle().replaceAll("(.*)/","comTop")+" collapse media-list\">");
+  //          out.println("<ul class=\"media-list\">");
+
+
             for (int j = 0; j < cols.length; j++)
             {
                 out.println("<li class=\"media well\">");
@@ -86,7 +109,7 @@
                 Bitstream logoCol = cols[j].getLogo();
                 if (showLogos && logoCol != null)
                 {
-                	out.println("<a class=\"pull-left col-md-2\" href=\"" + request.getContextPath() + "/handle/" 
+                	out.println("<a class=\"pull-left col-md-1\" href=\"" + request.getContextPath() + "/handle/" 
                 		+ cols[j].getHandle() + "\"><img class=\"media-object img-responsive\" src=\"" + 
                 		request.getContextPath() + "/retrieve/" + logoCol.getID() + "\" alt=\"collection logo\"></a>");
                 }
@@ -107,10 +130,13 @@
         }
 
         // Get the sub-communities in this community
-        Community[] comms = (Community[]) subcommunityMap.get(c.getID());
+        //FR: Change - collapse
+        //Community[] comms = (Community[]) subcommunityMap.get(c.getID());
         if (comms != null && comms.length > 0)
         {
-            out.println("<ul class=\"media-list\">");
+            //FR Change
+            out.println("<ul class=\""+c.getHandle().replaceAll("(.*)/","comTop")+" collapse media-list\" >");  
+            //out.println("<ul class=\"media-list\">");
             for (int k = 0; k < comms.length; k++)
             {
                showCommunity(comms[k], out, request, ic, collectionMap, subcommunityMap);

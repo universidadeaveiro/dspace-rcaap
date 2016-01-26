@@ -16,6 +16,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
 <%@ taglib uri="http://www.dspace.org/dspace-tags.tld" prefix="dspace" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%@ page import="org.dspace.browse.BrowseInfo" %>
 <%@ page import="org.dspace.browse.BrowseIndex" %>
@@ -59,6 +60,9 @@
 	}
 	
 	type = bix.getName();
+	%>
+		<c:set var="typea" scope="page" value="<%= type %>"/>
+	<%
 	
 	//FIXME: so this can probably be placed into the Messages.properties file at some point
 	// String header = "Browsing " + scope + " by " + type;
@@ -187,7 +191,7 @@
 	    for (char c = 'A'; c <= 'Z'; c++)
 	    {
 %>
-        <a href="<%= sharedLink %>&amp;starts_with=<%= c %>"><%= c %></a>
+        <a class="label label-default" href="<%= sharedLink %>&amp;starts_with=<%= c %>"><%= c %></a>
 <%
 	    }
 %>
@@ -275,8 +279,18 @@
     {
 %>
                 <li class="list-group-item">
-                    <a href="<%= sharedLink %><% if (results[i][1] != null) { %>&amp;authority=<%= URLEncoder.encode(results[i][1], "UTF-8") %>" class="authority <%= bix.getName() %>"><%= Utils.addEntities(results[i][0]) %></a> <% } else { %>&amp;value=<%= URLEncoder.encode(results[i][0], "UTF-8") %>"><%= Utils.addEntities(results[i][0]) %></a> <% } %>
-					<%= StringUtils.isNotBlank(results[i][2])?" <span class=\"badge\">"+results[i][2]+"</span>":""%>
+                <c:choose>
+            <c:when test="${typea == 'type'}" >
+            <a href="<%= sharedLink %>
+            <% if (results[i][1] != null) { %>&amp;authority=<%= URLEncoder.encode(results[i][1], "UTF-8") %>" class="authority <%= bix.getName() %>"><%= Utils.addEntities(results[i][0]) %></a> <% } 
+            else { %>&amp;value=<%= URLEncoder.encode(results[i][0], "UTF-8") %>"><% String typemessage = "document.type." + results[i][0]; %> <fmt:message key='<%= Utils.addEntities(typemessage) %>' /> </a> <% } %>
+            </c:when>
+            <c:otherwise> 
+            <a href="<%= sharedLink %><% if (results[i][1] != null) { %>&amp;authority=<%= URLEncoder.encode(results[i][1], "UTF-8") %>" class="authority <%= bix.getName() %>"><%= Utils.addEntities(results[i][0]) %></a> <% } else { %>&amp;value=<%= URLEncoder.encode(results[i][0], "UTF-8") %>"><%= Utils.addEntities(results[i][0]) %></a> <% } %>
+         </c:otherwise>
+    </c:choose>
+		<!--    <a href="<%= sharedLink %><% if (results[i][1] != null) { %>&amp;authority=<%= URLEncoder.encode(results[i][1], "UTF-8") %>" class="authority <%= bix.getName() %>"><%= Utils.addEntities(results[i][0]) %></a> <% } else { %>&amp;value=<%= URLEncoder.encode(results[i][0], "UTF-8") %>"><%= Utils.addEntities(results[i][0]) %></a> <% } %>
+		-->			<%= StringUtils.isNotBlank(results[i][2])?" <span class=\"badge\">"+results[i][2]+"</span>":""%>
                 </li>
 <%
     }

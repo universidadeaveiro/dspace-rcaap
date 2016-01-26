@@ -25,6 +25,26 @@
 <dspace:layout titlekey="jsp.error.internal.title">
     <%-- <h1>Internal System Error</h1> --%>
     <h1><fmt:message key="jsp.error.internal.title"/></h1>
+
+    <!-- RCAAP: Added to handle the internal error for cases like embargo date -->
+     <%
+        String message = "";
+        Throwable e = (Throwable) request.getAttribute("javax.servlet.error.exception");
+        if(e != null)
+            message = e.getMessage();
+        else {
+          e = (Throwable) request.getAttribute("error");
+          if(e != null) 
+            message = e.getMessage();
+       }
+       %>
+       <div class="alert alert-danger">
+        <p><%=message %></p>
+     </div>
+      <div class="alert alert-info">
+      <p><fmt:message key="message.error.internal.info"/></p>
+      </div>
+
     <%-- <p>Oops!  The system has experienced an internal error.  This is our fault,
     please pardon our dust during these early stages of the DSpace system!</p> --%>
     <p><fmt:message key="jsp.error.internal.text1"/></p>

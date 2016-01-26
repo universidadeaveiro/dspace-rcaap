@@ -1,0 +1,74 @@
+#!/bin/bash
+
+# Get the DSPACE/bin directory
+BINDIR=$(dirname $0)
+
+echo "> Starting \"$0\" execution..."
+
+echo "Updating OpenAIRE Project list"
+
+# Read parameters from DSpace config
+FILE=$($BINDIR/dspace dsrun org.dspace.core.ConfigurationManager -property openaire.projects.filename)
+
+### RCAAP - Create a temporary file with the projects from openaire
+FILE_TMP="$FILE.tmp"
+
+ONLINE=$($BINDIR/dspace dsrun org.dspace.core.ConfigurationManager -property openaire.projects.url)
+
+ONLINE=$(echo $ONLINE | sed 's/\"//g')
+
+
+XML_CLOSE_ELEMENTS="</value-pairs>\n</form-value-pairs>"
+
+IFS=$'\n'
+i=1
+
+for url in $(echo "$ONLINE" | sed 's_###_\n_g');
+do
+   if [ $i -eq 1 ]; then
+      if [[ $url == http* ]]; then
+         wget --no-check-certificate "$url" -O "${i}.xml"
+      else
+         cp "$url" "${i}.xml"
+      fi
+
+      #xmllint --format "${i}.xml" | head -n -2 > $FILE 
+      ####RCAAP ADD TO A TMP FILE INSTEAD TO THE END FILE
+      xmllint --format "${i}.xml" | head -n -2 > $FILE_TMP
+
+      rm "${i}.xml"
+
+      i=$(($i+1))
+   else
+      if [[ $url == http* ]]; then
+         wget --no-check-certificate "$url" -O "${i}.xml"
+      else
+         cp "$url" "${i}.xml"
+      fi
+
+      #xmllint --format "${i}.xml" | head -n -2 | tail -n +4 >> $FILE
+      ####RCAAP ADD TO A TMP FILE INSTEAD TO THE END FILE
+      xmllint --format "${i}.xml" | head -n -2 | tail -n +4 >> $FILE_TMP
+      rm "${i}.xml"
+
+      i=$(($i+1))
+   fi
+done
+
+#echo -e "\n$XML_CLOSE_ELEMENTS" >> $FILE
+####RCAAP ADD TO A TMP FILE INSTEAD TO THE END FILE
+echo -e "\n$XML_CLOSE_ELEMENTS" >> $FILE_TMP
+
+#TEST IF XML IS WELL FORMED
+xmllint --format --noout $FILE_TMP
+
+if [ $? -eq 0 ];
+then
+ mv $FILE_TMP $FILE
+fi
+
+rm -f $FILE_TMP
+###END RCAAP
+
+
+echo "> Ended \"$0\" execution."

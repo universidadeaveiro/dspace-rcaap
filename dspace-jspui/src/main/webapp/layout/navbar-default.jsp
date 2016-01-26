@@ -112,7 +112,7 @@
 
             </ul>
           </li>
-          <li class="<%= ( currentPage.endsWith( "/help" ) ? "active" : "" ) %>"><dspace:popup page="<%= LocaleSupport.getLocalizedMessage(pageContext, \"help.index\") %>"><fmt:message key="jsp.layout.navbar-default.help"/></dspace:popup></li>
+          <li class="<%= ( currentPage.contains( "/help" ) ? "active" : "" ) %>"><dspace:popup page="<%= LocaleSupport.getLocalizedMessage(pageContext, \"help.index\") %>"><fmt:message key="jsp.layout.navbar-default.help"/></dspace:popup></li>
        </ul>
 
  <% if (supportedLocales != null && supportedLocales.length > 1)
@@ -130,7 +130,7 @@
       <li>
         <a onclick="javascript:document.repost.locale.value='<%=supportedLocales[i].toString()%>';
                   document.repost.submit();" href="<%= request.getContextPath() %>?locale=<%=supportedLocales[i].toString()%>">
-         <%= supportedLocales[i].getDisplayLanguage(supportedLocales[i])%>
+         <%= supportedLocales[i].getDisplayLanguage(supportedLocales[i]).toLowerCase()%>
        </a>
       </li>
  <%

@@ -60,7 +60,7 @@
 
 <dspace:layout locbar="nolink" titlekey="jsp.home.title" feedData="<%= feedData %>">
 
-	<div class="jumbotron">
+	<div class="jumbotron photo">
         <%= topNews %>
 	</div>
 
@@ -124,8 +124,8 @@ if (submissions != null && submissions.count() > 0)
 		        }
 		%>
 		    <div style="padding-bottom: 50px; min-height: 200px;" class="item <%= first?"active":""%>">
-		      <div style="padding-left: 80px; padding-right: 80px; display: inline-block;"><%= StringUtils.abbreviate(displayTitle, 400) %> 
-		      	<a href="<%= request.getContextPath() %>/handle/<%=item.getHandle() %>" class="btn btn-success">See</a>
+		      <div style="padding-left: 80px; padding-right: 80px; display: inline-block;"><h4><%= StringUtils.abbreviate(displayTitle, 400) %></h4>
+		      	<a href="<%= request.getContextPath() %>/handle/<%=item.getHandle() %>" class="btn btn-primary btn-sm"><fmt:message key="jsp.recent-submission.see"/></a>
                         <p><%= StringUtils.abbreviate(displayAbstract, 500) %></p>
 		      </div>
 		    </div>
@@ -153,7 +153,7 @@ if (submissions != null && submissions.count() > 0)
 <%
 }
 %>
-<div class="col-md-4">
+<div class="col-md-4 hp-sidebar">
     <%= sideNews %>
 </div>
 </div>

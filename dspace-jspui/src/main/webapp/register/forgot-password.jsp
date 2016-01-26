@@ -55,7 +55,7 @@
 
                    	<%-- <td class="standard"><strong>E-mail Address:</strong></td> --%>
 					<div class="form-group">
-            			<label class="col-md-2 control-label" for="temail"><fmt:message key="jsp.register.forgot-password.email.field"/></label>
+            			<label class="col-md-3 control-label" for="temail"><fmt:message key="jsp.register.forgot-password.email.field"/></label>
             			<div class="col-md-6">
             				<input class="form-control" type="text" name="email" id="temail" />
             			</div>
@@ -63,7 +63,7 @@
 					<div class="row">
         				<div class="col-md-6">
 							<%-- <input type="submit" name="submit" value="I Forgot My Password"> --%>
-							<input class="btn btn-success pull-right" type="submit" name="submit" value="<fmt:message key="jsp.register.forgot-password.forgot.button"/>" />
+							<input class="btn btn-primary pull-right" type="submit" name="submit" value="<fmt:message key="jsp.register.forgot-password.forgot.button"/>" />
 						</div>
 					</div>
     </form>

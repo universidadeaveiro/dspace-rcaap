@@ -92,23 +92,41 @@ public abstract class AbstractBrowserServlet extends DSpaceServlet
             String startsWith = request.getParameter("starts_with");
             //validate input to avoid cross-site scripting
             try {
+
+            	 /*
+				*   FR: Workaround
+				*   Workaround to get authors with comma in name if not passed in the search box.
+				*   To have the same behaviour: Ribeiro, S and Ribeiro S will produce Ribeiro, S
+				* Uncomment this to activate workaround - commecnt to deactivate
+				*/
+				if(startsWith!= null && !startsWith.contains(",")
+				                     && (type.toLowerCase().contains("author") || type.toLowerCase().contains("contributor")
+				                        || type.toLowerCase().contains("advisor") ||  type.toLowerCase().contains("editor"))){
+
+                	startsWith = startsWith.replaceFirst("\\s", ", ");
+				}
+				/*
+				END OF CODEDED ADDED TO WORKAROUND
+				*
+
             	if (StringUtils.isNotBlank(month) && !"-1".equals(month)) {
             		Integer.valueOf(month);
             	}
             	if (StringUtils.isNotBlank(year) && !"-1".equals(year)) {
             		Integer.valueOf(year);
             	}
-            	if(StringUtils.isNotBlank(startsWith)) {
+            	//FR: Bug in the Solr which leds to an erratic behaviour in search - comment this if is to activate workaround - uncommnet to be as original file
+            	/*if(StringUtils.isNotBlank(startsWith)) {
             		startsWith = Utils.addEntities(startsWith);
-            	}
+            	}*/
             }
             catch(Exception ex) {
                 log.warn("We were unable to parse the browse request: maybe a cross-site scripting attach?");
                 return null;
             }
-            
-            
-            
+
+
+
             String valueFocus = request.getParameter("vfocus");
             String valueFocusLang = request.getParameter("vfocus_lang");
             String authority = request.getParameter("authority");
@@ -337,7 +355,7 @@ public abstract class AbstractBrowserServlet extends DSpaceServlet
             // now start up a browse engine and get it to do the work for us
             BrowseEngine be = new BrowseEngine(context);
             BrowseInfo binfo = be.browse(scope);
-            
+
             request.setAttribute("browse.info", binfo);
 
             if (AuthorizeManager.isAdmin(context))
@@ -357,7 +375,7 @@ public abstract class AbstractBrowserServlet extends DSpaceServlet
                 		}
                 		request.setAttribute("tagCloudConfig", tagCloudConfiguration);
                 	}
-                	
+
                     showSinglePage(context, request, response);
                 }
                 else

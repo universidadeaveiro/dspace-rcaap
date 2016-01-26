@@ -49,12 +49,13 @@
     </description>
   </context-param>
   
+
    <!--
-       DSpace Kernel startup listener. This listener is in charge of initializing/starting the
-       DSpace Kernel. It MUST be listed BEFORE any other DSpace listeners, as DSpace services
-       will not function until the Kernel is initialized.
+          DSpace Kernel startup listener. This listener is in charge of initializing/starting the
+          DSpace Kernel. It MUST be listed BEFORE any other DSpace listeners, as DSpace services
+          will not function until the Kernel is initialized.
    --> 
-   <listener>
+    <listener>
       <listener-class>
          org.dspace.servicemanager.servlet.DSpaceKernelServletContextListener
       </listener-class>

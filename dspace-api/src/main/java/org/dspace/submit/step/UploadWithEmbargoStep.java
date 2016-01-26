@@ -352,6 +352,7 @@ public class UploadWithEmbargoStep extends UploadStep
                 String fileDescription =  (String) request.getAttribute(param + "-description");
                 if(fileDescription==null ||fileDescription.length()==0)
                 {
+                    //request.getParameter("description");
                     fileDescription = request.getParameter("description");
                 }
 

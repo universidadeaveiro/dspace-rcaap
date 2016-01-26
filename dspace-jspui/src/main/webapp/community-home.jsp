@@ -163,8 +163,8 @@
 			}
 			%>
 		    <div style="padding-bottom: 50px; min-height: 200px;" class="item <%= first?"active":""%>">
-		      <div style="padding-left: 80px; padding-right: 80px; display: inline-block;"><%= StringUtils.abbreviate(displayTitle, 400) %> 
-		      	<a href="<%= request.getContextPath() %>/handle/<%=items[i].getHandle() %>" class="btn btn-success">See</a>
+		      <div style="padding-left: 80px; padding-right: 80px; display: inline-block;"><h4><%= StringUtils.abbreviate(displayTitle, 400) %></h4>
+		      	<a href="<%= request.getContextPath() %>/handle/<%=items[i].getHandle() %>" class="btn btn-primary btn-sm"><fmt:message key="jsp.recent-submission.see"/></a>
 		      </div>
 		    </div>
 <%
@@ -211,10 +211,10 @@
 	{
 		String key = "browse.menu." + bis[i].getName();
 %>
-	<form method="get" action="<%= request.getContextPath() %>/handle/<%= community.getHandle() %>/browse">
+	<form class="btn-group" method="get" action="<%= request.getContextPath() %>/handle/<%= community.getHandle() %>/browse">
 		<input type="hidden" name="type" value="<%= bis[i].getName() %>"/>
 		<%-- <input type="hidden" name="community" value="<%= community.getHandle() %>" /> --%>
-		<input class="btn btn-default col-md-3" type="submit" name="submit_browse" value="<fmt:message key="<%= key %>"/>"/>
+		<input class="btn btn-primary" type="submit" name="submit_browse" value="<fmt:message key="<%= key %>"/>"/>
 	</form>
 <%	
 	}

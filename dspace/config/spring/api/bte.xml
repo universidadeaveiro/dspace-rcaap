@@ -548,7 +548,7 @@
 				<entry value="abstract" key="dc.description.abstract" />
 				<entry value="allkeywords" key="dc.subject" />
 				<entry value="arxivCategory" key="dc.subject" />
-				<entry value="doi" key="dc.identifier" />
+				<entry value="doi" key="dc.identifier.doi" />
 				<entry value="publisher" key="dc.publisher" />
 				<!-- Not used - new metadata fields need to be declared for them in DSpace registry -->
 				<!-- 

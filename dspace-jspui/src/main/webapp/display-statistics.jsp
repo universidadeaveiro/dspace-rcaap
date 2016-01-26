@@ -33,12 +33,18 @@
 
 <dspace:layout titlekey="jsp.statistics.title">
 <h1><fmt:message key="jsp.statistics.title"/></h1>
+
+<p>
 <h2><fmt:message key="jsp.statistics.heading.visits"/></h2>
-<table class="statsTable">
+<div class="table-responsive">
+<table class="statsTable table table-striped">
+<thead>
 <tr>
-<th><!-- spacer cell --></th>
-<th><fmt:message key="jsp.statistics.heading.views"/></th>
+<th class="col-md-11"><!-- spacer cell --></th>
+<th class="col-md-1"><fmt:message key="jsp.statistics.heading.views"/></th>
 </tr>
+</thead>
+<tbody>
 <c:forEach items="${statsVisits.matrix}" var="row" varStatus="counter">
 <c:forEach items="${row}" var="cell" varStatus="rowcounter">
 <c:choose>
@@ -58,17 +64,25 @@
 </c:forEach>
 </tr>
 </c:forEach>
+</tbody>
 </table>
+</div>
+</p>
 
+<p>
 <h2><fmt:message key="jsp.statistics.heading.monthlyvisits"/></h2>
-<table class="statsTable">
+<div class="table-responsive">
+<table class="statsTable table table-striped">
+<thead>
 <tr>
-<th><!-- spacer cell --></th>
+<th class="col-md-1"><!-- spacer cell --></th>
 <c:forEach items="${statsMonthlyVisits.colLabels}" var="headerlabel" varStatus="counter">
 <th>
 <c:out value="${headerlabel}"/>
 </th>
 </c:forEach>
+</thead>
+<tbody>
 </tr>
 <c:forEach items="${statsMonthlyVisits.matrix}" var="row" varStatus="counter">
 <c:choose>
@@ -90,16 +104,23 @@
 </c:forEach>
 </tr>
 </c:forEach>
+</tbody>
 </table>
+</div>
+</p>
 
 <% if(isItem) { %>
-
+<p>
 <h2><fmt:message key="jsp.statistics.heading.filedownloads"/></h2>
-<table class="statsTable">
+<div class="table-responsive">
+<table class="statsTable table table-striped">
+<thead>
 <tr>
-<th><!-- spacer cell --></th>
-<th><fmt:message key="jsp.statistics.heading.views"/></th>
+<th class="col-md-11"><!-- spacer cell --></th>
+<th class="col-md-1"><fmt:message key="jsp.statistics.heading.views"/></th>
 </tr>
+</thead>
+<tbody>
 <c:forEach items="${statsFileDownloads.matrix}" var="row" varStatus="counter">
 <c:forEach items="${row}" var="cell" varStatus="rowcounter">
 <c:choose>
@@ -119,16 +140,23 @@
 </c:forEach>
 </tr>
 </c:forEach>
+</tbody>
 </table>
+</div>
+</p>
 
 <% } %>
-
+<p>
 <h2><fmt:message key="jsp.statistics.heading.countryvisits"/></h2>
-<table class="statsTable">
+<div class="table-responsive">
+<table class="statsTable table table-striped">
+<thead>
 <tr>
-<th><!-- spacer cell --></th>
-<th><fmt:message key="jsp.statistics.heading.views"/></th>
+<th class="col-md-11"><!-- spacer cell --></th>
+<th class="col-md-1"><fmt:message key="jsp.statistics.heading.views"/></th>
 </tr>
+</thead>
+<tbody>
 <c:forEach items="${statsCountryVisits.matrix}" var="row" varStatus="counter">
 <c:forEach items="${row}" var="cell" varStatus="rowcounter">
 <c:choose>
@@ -148,14 +176,21 @@
 </td>
 </c:forEach>
 </c:forEach>
+</tbody>
 </table>
-
+</div>
+</p>
+<p>
 <h2><fmt:message key="jsp.statistics.heading.cityvisits"/></h2>
-<table class="statsTable">
+<div class="table-responsive">
+<table class="statsTable table table-striped">
+<thead>
 <tr>
-<th><!-- spacer cell --></th>
-<th><fmt:message key="jsp.statistics.heading.views"/></th>
+<th class="col-md-11"><!-- spacer cell --></th>
+<th class="col-md-1"><fmt:message key="jsp.statistics.heading.views"/></th>
 </tr>
+</thead>
+<tbody>
 <c:forEach items="${statsCityVisits.matrix}" var="row" varStatus="counter">
 <c:forEach items="${row}" var="cell" varStatus="rowcounter">
 <c:choose>
@@ -175,10 +210,9 @@
 </tr>
 </c:forEach>
 </c:forEach>
+</tbody>
 </table>
-
+</div>
+</p>
 
 </dspace:layout>
-
-
-

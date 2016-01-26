@@ -49,6 +49,19 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="Generator" content="<%= generator %>" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!-- RCCAP - Open Graph Protocol implementation-->
+        <%
+            String baseUrl = ConfigurationManager.getProperty("dspace.baseUrl");
+            String currentUrl = org.dspace.app.webui.util.UIUtil.getOriginalURL(request);
+        %>
+        <head prefix="dspace: <%= baseUrl %>">
+        <meta property="og:title" content="<%= title %>" />
+        <meta property="og:type" content="dspace:page" />
+        <meta property="og:url" content="<%= currentUrl %>" />
+        <meta property="og:image" content="<%= baseUrl %><%= request.getContextPath() %>/image/logo.gif" />
+        <!-- /RCCAP - Open Graph Protocol implementation-->
+
         <link rel="shortcut icon" href="<%= request.getContextPath() %>/favicon.ico" type="image/x-icon"/>
 	    <link rel="stylesheet" href="<%= request.getContextPath() %>/static/css/jquery-ui-1.10.3.custom/redmond/jquery-ui-1.10.3.custom.css" type="text/css" />
 	    <link rel="stylesheet" href="<%= request.getContextPath() %>/static/css/bootstrap/bootstrap.min.css" type="text/css" />
@@ -117,6 +130,29 @@
   <script src="<%= request.getContextPath() %>/static/js/html5shiv.js"></script>
   <script src="<%= request.getContextPath() %>/static/js/respond.min.js"></script>
 <![endif]-->
+
+
+<!-- Begin Cookie Consent plugin by Silktide - http://silktide.com/cookieconsent -->
+<link rel="stylesheet" type="text/css" href="https://s3-eu-west-1.amazonaws.com/assets.cookieconsent.silktide.com/current/style.min.css"/>
+<script type="text/javascript" src="https://s3-eu-west-1.amazonaws.com/assets.cookieconsent.silktide.com/current/plugin.min.js"></script>
+<script type="text/javascript">
+// <![CDATA[
+cc.initialise({
+	cookies: {
+		analytics: {}
+	},
+	settings: {
+		consenttype: "implicit",
+		bannerPosition: "bottom",
+		tagPosition: "vertical-right",
+		hideprivacysettingstab: true,
+		onlyshowbanneronce: true,
+		useSSL: true
+	}
+});
+// ]]>
+</script>
+<!-- End Cookie Consent plugin -->
     </head>
 
     <%-- HACK: leftmargin, topmargin: for non-CSS compliant Microsoft IE browser --%>
@@ -148,8 +184,8 @@
 <div class="container banner">
 	<div class="row">
 		<div class="col-md-9 brand">
-		<h1><fmt:message key="jsp.layout.header-default.brand.heading" /></h1>
-        <fmt:message key="jsp.layout.header-default.brand.description" /> 
+		<h1><!--<fmt:message key="jsp.layout.header-default.brand.heading" />--></h1>
+        <!--<fmt:message key="jsp.layout.header-default.brand.description" />--> 
         </div>
         <div class="col-md-3"><img class="pull-right" src="<%= request.getContextPath() %>/image/logo.gif" alt="DSpace logo" />
         </div>

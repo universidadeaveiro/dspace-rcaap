@@ -52,12 +52,12 @@
 
                             <%-- <td class="standard"><strong>E-mail Address:</strong></td> --%>
 					    <div class="form-group">
-            				<label class="col-md-offset-3 col-md-2 control-label" for="temail"><fmt:message key="jsp.register.new-user.email.field"/></label>
-                            <div class="col-md-3"><input class="form-control" type="text" name="email" id="temail" /></div>
+            				<label class="col-md-offset-1 col-md-3 control-label" for="temail"><fmt:message key="jsp.register.new-user.email.field"/></label>
+                            <div class="col-md-5"><input class="form-control" type="text" name="email" id="temail" /></div>
                         </div>
                         <div class="row col-md-offset-5">
                                 <%-- <input type="submit" name="submit" value="Register"> --%>
-							<input class="btn btn-default col-md-4" type="submit" name="submit" value="<fmt:message key="jsp.register.new-user.register.button"/>" />
+							<input class="btn btn-primary col-md-4" type="submit" name="submit" value="<fmt:message key="jsp.register.new-user.register.button"/>" />
 						</div>
     </form>
     <%-- <p>If you or your department are interested in registering with DSpace, please

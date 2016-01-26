@@ -29,7 +29,7 @@ import org.dspace.storage.rdbms.TableRowIterator;
 
 /**
  * Class representing an item in the process of being submitted by a user
- * 
+ *
  * @author Robert Tansley
  * @version $Revision$
  */
@@ -52,7 +52,7 @@ public class WorkspaceItem implements InProgressSubmission
 
     /**
      * Construct a workspace item corresponding to the given database row
-     * 
+     *
      * @param context
      *            the context this object exists in
      * @param row
@@ -74,12 +74,12 @@ public class WorkspaceItem implements InProgressSubmission
     /**
      * Get a workspace item from the database. The item, collection and
      * submitter are loaded into memory.
-     * 
+     *
      * @param context
      *            DSpace context object
      * @param id
      *            ID of the workspace item
-     * 
+     *
      * @return the workspace item, or null if the ID is invalid.
      */
     public static WorkspaceItem find(Context context, int id)
@@ -121,7 +121,7 @@ public class WorkspaceItem implements InProgressSubmission
     /**
      * Create a new workspace item, with a new ID. An Item is also created. The
      * submitter is the current user in the context.
-     * 
+     *
      * @param c
      *            DSpace context object
      * @param coll
@@ -129,7 +129,7 @@ public class WorkspaceItem implements InProgressSubmission
      * @param template
      *            if <code>true</code>, the workspace item starts as a copy
      *            of the collection's template item
-     * 
+     *
      * @return the newly created workspace item
      */
     public static WorkspaceItem create(Context c, Collection coll,
@@ -257,6 +257,17 @@ public class WorkspaceItem implements InProgressSubmission
         row.setColumn("item_id", i.getID());
         row.setColumn("collection_id", coll.getID());
 
+
+        //Adicionado como na versao 3.2
+		//Problema - Tem de se adicionar no dspace.cfg estes valores entre aspas
+		/*boolean multiple_files = ConfigurationManager.getBooleanProperty("deposit.default.multiple_files",false);
+		boolean multiple_titles = ConfigurationManager.getBooleanProperty("deposit.default.multiple_titles",false);
+		boolean published_before = ConfigurationManager.getBooleanProperty("deposit.default.published_before",false);
+
+		row.setColumn("multiple_files",multiple_files);
+		row.setColumn("multiple_titles",multiple_titles);
+		row.setColumn("published_before",published_before);*/
+
         log.info(LogManager.getHeader(c, "create_workspace_item",
                 "workspace_item_id=" + row.getIntColumn("workspace_item_id")
                         + "item_id=" + i.getID() + "collection_id="
@@ -273,12 +284,12 @@ public class WorkspaceItem implements InProgressSubmission
      * Get all workspace items for a particular e-person. These are ordered by
      * workspace item ID, since this should likely keep them in the order in
      * which they were created.
-     * 
+     *
      * @param context
      *            the context object
      * @param ep
      *            the eperson
-     * 
+     *
      * @return the corresponding workspace items
      */
     public static WorkspaceItem[] findByEPerson(Context context, EPerson ep)
@@ -290,7 +301,7 @@ public class WorkspaceItem implements InProgressSubmission
                 "SELECT workspaceitem.* FROM workspaceitem, item WHERE " +
                 "workspaceitem.item_id=item.item_id AND " +
                 "item.submitter_id= ? " +
-                "ORDER BY workspaceitem.workspace_item_id", 
+                "ORDER BY workspaceitem.workspace_item_id",
                 ep.getID());
 
         try
@@ -325,12 +336,12 @@ public class WorkspaceItem implements InProgressSubmission
 
     /**
      * Get all workspace items for a particular collection.
-     * 
+     *
      * @param context
      *            the context object
      * @param c
      *            the collection
-     * 
+     *
      * @return the corresponding workspace items
      */
     public static WorkspaceItem[] findByCollection(Context context, Collection c)
@@ -445,13 +456,13 @@ public class WorkspaceItem implements InProgressSubmission
                 tri.close();
             }
         }
-        
+
         return wsItems.toArray(new WorkspaceItem[wsItems.size()]);
     }
-    
+
     /**
      * Get the internal ID of this workspace item
-     * 
+     *
      * @return the internal identifier
      */
     public int getID()
@@ -461,7 +472,7 @@ public class WorkspaceItem implements InProgressSubmission
 
     /**
      * Get the value of the stage reached column
-     * 
+     *
      * @return the value of the stage reached column
      */
     public int getStageReached()
@@ -471,7 +482,7 @@ public class WorkspaceItem implements InProgressSubmission
 
     /**
      * Set the value of the stage reached column
-     * 
+     *
      * @param v
      *            the value of the stage reached column
      */
@@ -483,7 +494,7 @@ public class WorkspaceItem implements InProgressSubmission
     /**
      * Get the value of the page reached column (which represents the page
      * reached within a stage/step)
-     * 
+     *
      * @return the value of the page reached column
      */
     public int getPageReached()
@@ -494,7 +505,7 @@ public class WorkspaceItem implements InProgressSubmission
     /**
      * Set the value of the page reached column (which represents the page
      * reached within a stage/step)
-     * 
+     *
      * @param v
      *            the value of the page reached column
      */
@@ -596,10 +607,10 @@ public class WorkspaceItem implements InProgressSubmission
 
     private void deleteEpersonGroup2WorkspaceItem() throws SQLException
     {
-        
+
         String removeSQL="DELETE FROM epersongroup2workspaceitem WHERE workspace_item_id = ?";
         DatabaseManager.updateQuery(ourContext, removeSQL,getID());
-        
+
     }
 
     public void deleteWrapper() throws SQLException, AuthorizeException,
