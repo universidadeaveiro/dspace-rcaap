@@ -29,3 +29,13 @@ META-INF/
 
 ##Mac noise
 .DS_Store
+
+#Ignore Travis
+.travis*
+
+#Ignore xmlui files
+dspace-xmlui-mirage2/
+dspace-xmlui/
+dspace/xmlui/
+dspace/xmlui-mirage/
+
