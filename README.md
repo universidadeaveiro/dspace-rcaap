@@ -44,4 +44,4 @@ In the footer add the following code:
       <noscript><p><img src="//analytics.openaire.eu/piwik.php?idsite=<%=piwikID%>" style="border:0;" alt="" /></p></noscript>
 
 
-And in the build.properties have to be defined piwik.id with the piwik of the institution.
+And in the build.properties add the piwik.id of the institution.
