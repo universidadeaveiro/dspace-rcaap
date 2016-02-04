@@ -288,6 +288,18 @@ span.paneltitle{
         padding-top: 6px;     
 }
 
+.metadataFieldValue > hr {
+	margin: 3px;
+	border: 0;
+}
+/*
+	Separate the elements from abstracts
+*/
+#content > div:nth-child(2) > div.row > div.col-md-9 > table > tbody > tr:nth-child(4) > td.metadataFieldValue > hr{
+	border: 1px solid #eeeeee;
+	margin: 10px 0 10px 0;
+}
+
 /*
 UMINHO STATS
 */
