@@ -75,15 +75,14 @@ if [ -z "$BACKUP_DIR" ]; then
   BACKUP_DIR="${SCRIPTPATH}/../exports"
 fi
 
+#first, retrive the number of archived items in database
+NUMBER_ITEMS=(`echo "SELECT count(*) FROM item WHERE in_archive=TRUE AND discoverable=TRUE;" | psql -tU postgres dspace|sed 's| ||g'`)
 
 #export AIP packages
 ${SCRIPTPATH}/dspace packager -d -a -u -t AIP -e ${EMAIL} -i ${HANDLE_PREFIX}/0 ${BACKUP_DIR}/sitewide-aip.zip>${LOG_FILE}
 
-
 #find on the backup directory and count the number of just created files
 NUMBER_BACKUPS=(`find $BACKUP_DIR -mtime 0 ! -size 0 -type f -name "ITEM*.zip" | wc -l`)
-#retrive the number of archived items in database
-NUMBER_ITEMS=(`echo "SELECT count(*) FROM item WHERE in_archive=TRUE AND discoverable=TRUE;" | psql -tU postgres dspace|sed 's| ||g'`)
 
 if [ "$NUMBER_BACKUPS" = "$NUMBER_ITEMS" ]; then
     echo "1" > ${RESULT_FILE_NAME}
