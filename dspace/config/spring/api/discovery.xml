@@ -110,7 +110,7 @@
                 <ref bean="searchFilterSubject" />
                 <ref bean="searchFilterIssued" />
                 <ref bean="searchFilterType" />
-                <ref bean="searchFilterAccess" />
+                <ref bean="searchFilterRights" />
             </list>
         </property>
         <!--The sort filters for the discovery search-->
@@ -217,7 +217,7 @@
                 <ref bean="searchFilterSubject" />
                 <ref bean="searchFilterIssued" />
                 <ref bean="searchFilterType" />
-                <ref bean="searchFilterAccess" />
+                <ref bean="searchFilterRights" />
             </list>
         </property>
         <!--The sort filters for the discovery search (same as defaultConfiguration above)-->
