@@ -76,7 +76,7 @@ if [ -z "$BACKUP_DIR" ]; then
 fi
 
 #first, retrive the number of archived items in database
-NUMBER_ITEMS=(`echo "SELECT count(*) FROM item WHERE in_archive=TRUE AND discoverable=TRUE;" | psql -tU postgres dspace|sed 's| ||g'`)
+NUMBER_ITEMS=(`echo "SELECT count(*) FROM item WHERE in_archive=TRUE;" | psql -tU postgres dspace|sed 's| ||g'`)
 
 #export AIP packages
 ${SCRIPTPATH}/dspace packager -d -a -u -t AIP -e ${EMAIL} -i ${HANDLE_PREFIX}/0 ${BACKUP_DIR}/sitewide-aip.zip &> ${LOG_FILE}
