@@ -6,6 +6,11 @@
 RESULT_FILE_NAME="/var/tmp/dspace/dspace_aip_dump_status"
 LOG_FILE="/var/log/dspace/export_aip.log"
 
+
+# JAVA memory allocation
+export JAVA_OPTS="-Xmx1024M -Xms512M -Dfile.encoding=UTF-8"
+
+
 # Current script dir
 pushd `dirname $0` > /dev/null
 SCRIPTPATH=`pwd`
