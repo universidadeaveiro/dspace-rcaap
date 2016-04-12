@@ -295,9 +295,23 @@ span.paneltitle{
 /*
 	Separate the elements from abstracts
 */
-#content > div:nth-child(2) > div.row > div.col-md-9 > table > tbody > tr:nth-child(4) > td.metadataFieldValue > hr, #content > div:nth-child(2) > table > tbody > tr:nth-child(4) > td.metadataFieldValue > hr{
+#content > div > table > tbody > tr > td.metadataFieldValue > hr,
+#content > div > div.row > div.col-md-9 > table > tbody > tr > td.metadataFieldValue > hr,
+#content > div:nth-child(3) > table > tbody > tr:nth-child(7) > td.metadataFieldValue > hr
+#content > div:nth-child(2) > table > tbody > tr:nth-child(4) > td.metadataFieldValue > hr,
+#content > div:nth-child(3) > table > tbody > tr:nth-child(6) > td.metadataFieldValue > hr
+{
 	border: 1px solid #eeeeee;
-	margin: 10px 0 10px 0;
+	margin: 8px 0 8px 0;
+}
+
+#content > div:nth-child(3) > table > tbody > tr:nth-child(2) > td.metadataFieldValue > *,
+#content > div:nth-child(2) > table > tbody > tr:nth-child(2) > td.metadataFieldValue > *,
+#content > div:nth-child(3) > table > tbody > tr:nth-child(3) > td.metadataFieldValue > *,
+#content > div:nth-child(3) > table > tbody > tr:nth-child(4) > td.metadataFieldValue >  *
+{
+	border: 0;
+	margin: 2px 0 2px 0;
 }
 
 /*
