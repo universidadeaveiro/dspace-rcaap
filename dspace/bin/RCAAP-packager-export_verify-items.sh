@@ -6,6 +6,11 @@
 RESULT_FILE_NAME="/var/tmp/dspace/dspace_aip_dump_status"
 LOG_FILE="/var/log/dspace/export_aip.log"
 
+
+# JAVA memory allocation
+export JAVA_OPTS="-Xmx1024M -Xms512M -Dfile.encoding=UTF-8"
+
+
 # Current script dir
 pushd `dirname $0` > /dev/null
 SCRIPTPATH=`pwd`
@@ -75,11 +80,11 @@ if [ -z "$BACKUP_DIR" ]; then
   BACKUP_DIR="${SCRIPTPATH}/../exports"
 fi
 
-#first, retrive the number of archived items in database
-NUMBER_ITEMS=(`echo "SELECT count(*) FROM item WHERE in_archive=TRUE AND discoverable=TRUE;" | psql -tU postgres dspace|sed 's| ||g'`)
+#first, retrive the number of archived items in database associated with a prefix
+NUMBER_ITEMS=(`echo "SELECT count(*) FROM item LEFT JOIN handle ON item.item_id = handle.resource_id AND handle.resource_type_id = 2 AND handle.handle LIKE '${HANDLE_PREFIX}/%' WHERE in_archive=TRUE AND handle.handle IS NOT NULL;" | psql -tU postgres dspace|sed 's| ||g'`)
 
 #export AIP packages
-${SCRIPTPATH}/dspace packager -d -a -u -t AIP -e ${EMAIL} -i ${HANDLE_PREFIX}/0 ${BACKUP_DIR}/sitewide-aip.zip>${LOG_FILE}
+${SCRIPTPATH}/dspace packager -d -a -u -t AIP -e ${EMAIL} -i ${HANDLE_PREFIX}/0 ${BACKUP_DIR}/${HANDLE_PREFIX}-aip.zip &> ${LOG_FILE}
 
 #find on the backup directory and count the number of just created files
 NUMBER_BACKUPS=(`find $BACKUP_DIR -mtime 0 ! -size 0 -type f -name "ITEM*.zip" | wc -l`)
