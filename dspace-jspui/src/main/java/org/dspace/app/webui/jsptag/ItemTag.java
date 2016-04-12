@@ -50,6 +50,10 @@ import org.dspace.core.I18nUtil;
 import org.dspace.core.PluginManager;
 import org.dspace.core.Utils;
 
+//UM
+import pt.keep.dspace.report.ReportLinkManager;
+//END UM
+
 /**
  * <P>
  * JSP tag for displaying an item.
@@ -524,7 +528,10 @@ public class ItemTag extends TagSupport
                             }
                             else
                             {
-                                out.print("<hr />");
+								if(qualifier != null && qualifier.toLowerCase().equals("abstract"))
+                                	out.print("<hr class=\"abstract\" />");
+                                else
+                                	out.print("<br />");
                             }
                         }
 
@@ -610,6 +617,11 @@ public class ItemTag extends TagSupport
 	                                                + "href=\"" + request.getContextPath() + "/browse?type=" + browseIndex + "&amp;" + argument + "="
 	                    				+ URLEncoder.encode(value, "UTF-8") + "\">" + Utils.addEntities(values[j].value)
 	                    				+ "</a>");
+	                    	if (browseIndex.equals("author")) {
+								 if (ConfigurationManager.getBooleanProperty("stats.reports.author.itemshow")) {
+									out.print(ReportLinkManager.generateLink(pageContext, (HttpServletRequest)pageContext.getRequest(), value));
+								 }
+							}
 	                    }
                         else
                         {
@@ -744,7 +756,12 @@ public class ItemTag extends TagSupport
                 out.print(collections[i].getHandle());
                 out.print("\">");
                 out.print(collections[i].getMetadata("name"));
-                out.print("</a><br/>");
+                //out.print("</a><br/>");
+				out.print("</a>");
+				if (ConfigurationManager.getBooleanProperty("stats.reports.collection.itemshow")) {
+					out.print(ReportLinkManager.generateLink(pageContext, (HttpServletRequest)pageContext.getRequest(), collections[i]));
+				}
+	            out.print("<br/>");
             }
 
             out.println("</td></tr>");
