@@ -54,14 +54,14 @@
 	    <div class="row">
 		<div class="col-md-6 promotors">
 			<p>Promotores do RCAAP:</p>
-			<a href="http://www.fct.pt" target="_blank" title="Funda&ccedil;&atilde;o para a Ci&ecirc;ncia e a Tecnologia"><img src="<%= request.getContextPath() %>/image/logos/logo_fct_fccn.png" alt="Logo da Funda&ccedil;&atilde;o para a Ci&ecirc;ncia e a Tecnologia - Funda&ccedil;&atilde;o para a Computa&ccedil;&atilde;o Cient&iacute;fica Nacional" /></a>
-			<a href="http://www.uminho.pt" target="_blank" title="Universidade do Minho"><img src="<%= request.getContextPath() %>/image/logos/logo_uminho.png" alt="Logo da Universidade do Minho"></a>
+			<a href="http://www.fct.pt" target="_blank" title="Funda&ccedil;&atilde;o para a Ci&ecirc;ncia e a Tecnologia"><span class="hide-text  logos logos-logo-fct-fccn">Funda&ccedil;&atilde;o para a Ci&ecirc;ncia e a Tecnologia - Funda&ccedil;&atilde;o para a Computa&ccedil;&atilde;o Cient&iacute;fica Nacional</span></a>
+			<a href="http://www.uminho.pt" target="_blank" title="Universidade do Minho"><span class="hide-text logos logos-logo-uminho">Universidade do Minho</span></a>
 		</div>
 		<div class="col-md-6 sponsors">
 			<p>Financiadores do RCAAP:</p>
-			<a href="http://www.portugal.gov.pt/" target="_blank" title="Governo Portugu&ecirc;s"><img src="<%= request.getContextPath() %>/image/logos/logo_pt_mec.png" alt="Logo do Governo de Portugal &middot; Minist&eacute;rio da Educa&ccedil;&atilde;o e Ci&ecirc;ncia" /></a>
-			<a href="http://www.posc.mctes.pt/" target="_blank" title="POS_Conhecimento"><img src="<%= request.getContextPath() %>/image/logos/logo_pos_conhecimento.png" alt="POS_C"></a>
-			<a href="http://www.europa.eu.int/" target="_blank" title="Uni&atilde;o Europeia"><img src="<%= request.getContextPath() %>/image/logos/logo_ue.png" alt="Logo da Uni&atilde;o Europeia"></a>
+			<a href="http://www.portugal.gov.pt/" target="_blank" title="Rep&uacute;blica Portuguesa"><span class="hide-text logos logos-logo-rp-mctes">Rep&uacute;blica Portuguesa &middot; Minist&eacute;rio da Ci&ecirc;ncia, Tecnologia e Ensino Superior</span></a>
+			<a href="http://www.posc.mctes.pt/" target="_blank" title="POS_Conhecimento"><span class="hide-text logos logos-logo-posc">POS_C</span></a>
+			<a href="http://www.europa.eu.int/" target="_blank" title="Uni&atilde;o Europeia"><span class="hide-text logos logos-logo_FEDER">Uni&atilde;o Europeia - Programa FEDER</span></a>
 		</div>
 	</div>
 	 </div>   
