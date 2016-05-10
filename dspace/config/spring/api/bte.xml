@@ -436,7 +436,7 @@
 		<!-- For CrossRef service you need to obtain an API Key from CrossRef. Once you get it, add it 
 			 to the following configuration value 
 		-->
-		<property name="apiKey" value="" />
+		<property name="apiKey" value="info@rcaap.pt" />
 		<!-- Uncomment the following line if you want to define the max results returned by the 
 			 CrossRef free text (by author, title, date) search. Default value is 10 
 		-->
@@ -536,7 +536,7 @@
 			<map key-type="java.lang.String" value-type="java.lang.String">
 				<entry value="jissn" key="dc.identifier.issn" />
 				<entry value="pisbn" key="dc.identifier.isbn" />
-				<entry value="journal" key="dc.source" />
+				<!--<entry value="journal" key="dc.source" />--> <!-- Tiago changed value -->
 				<entry value="title" key="dc.title" />
 				<entry value="issued" key="dc.date.issued" />
 				<entry value="language" key="dc.language.iso" />
@@ -550,6 +550,21 @@
 				<entry value="arxivCategory" key="dc.subject" />
 				<entry value="doi" key="dc.identifier.doi" />
 				<entry value="publisher" key="dc.publisher" />
+				
+				<!--<entry value="jissn" key="dc.identifier" />--> <!--Modified --> <!-- There is a bug Separate issn like doi?-->
+				<!--<entry value="doi" key="dc.identifier.doi" />--> <!--Already exists -->
+				<entry value="journal" key="degois.publication.title" /> <!-- Modified -->
+								
+				
+				<!--Added -->
+				<!--<entry value="publisher" key="dc.publisher" />--> <!-- Already exists-->
+				<entry value="titleAlternative" key="dc.title.alternative" />
+				<entry value="firstpage" key="degois.publication.firstPage" />
+				<entry value="lastpage" key="degois.publication.lastPage" />
+				<entry value="volume" key="degois.publication.volume" />
+				<entry value="issue" key="degois.publication.issue" />
+				<entry value="mesh" key="dc.subject" />
+				
 				<!-- Not used - new metadata fields need to be declared for them in DSpace registry -->
 				<!-- 
 				<entry value="url" key="" />
