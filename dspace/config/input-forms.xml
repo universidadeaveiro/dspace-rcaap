@@ -187,7 +187,7 @@
                         <repeatable>false</repeatable>
                         <label>Tipo</label>
                         <input-type value-pairs-name="common_types">dropdown</input-type>
-                        <hint>Selecione o tipo do conte&#xFA;do que est&#xE1; a depositar. Para selecionar mais do que um valor da lista, pressione a tecla "CTRL" ou "Shift". </hint>
+                        <hint>Selecione o tipo do conte&#xFA;do que est&#xE1; a depositar. </hint>
                         <required></required>
                     </field>              
                     <field>
