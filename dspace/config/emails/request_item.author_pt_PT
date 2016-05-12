@@ -2,16 +2,17 @@ Assunto: Pedido de cópia do documento
 
 Caro(a) {7},
 
-Um utilizador {9}, chamado {0} com o email {1}, pediu cópia dos ficheiro(s) associados com o documento: "{4}" ({3}) submetido por si.
+Um utilizador {9}, chamado(a) {0} com o email {1}, soliciotu uma cópia do(s) ficheiro(s) referentes ao documento: "{4}" ({3}) submetido por si.
 
-O Pedido veio junto com a seguinte mensagem:
+O pedido foi acompanhado pela seguinte mensagem:
 
 "{5}"
 
-Para responder, clicar em {6}. Caso escolha aprovar ou rejeitar o pedido, pensamos que é do seu interesse responder.
+SE NÃO É AUTOR DESTE DOCUMENTO e apenas submeteu em nome do autor, REDIRECIONE ESTA MENSAGEM PARA O(S) AUTOR(ES).  Apenas o(s) autor(es) devem responder ao pedido de cópia.
 
-SE NÃO É AUTOR DESTE DOCUMENTO, e apenas submeteu em nome do autor, REDIRECIONE ESTA MENSAGEM PARA O(S) AUTOR(ES).  Apenas o autor(es)devem responder ao pedido de cópia.
+Para responder, clicar em {6}. Aprovar ou rejeitar o pedido fica ao seu (vosso) critério, pensamos, no entanto, que é do seu (vosso) interesse responder.
 
-SE É AUTOR, obrigado pela sua cooperação!
+
+Obrigado pela sua cooperação!
 
 Se tem alguma questão em relação a este pedido, por favor contacte {10}.
