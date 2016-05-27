@@ -50,9 +50,6 @@ import org.dspace.core.I18nUtil;
 import org.dspace.core.PluginManager;
 import org.dspace.core.Utils;
 
-//UM
-import pt.keep.dspace.report.ReportLinkManager;
-//END UM
 
 /**
  * <P>
@@ -617,11 +614,6 @@ public class ItemTag extends TagSupport
 	                                                + "href=\"" + request.getContextPath() + "/browse?type=" + browseIndex + "&amp;" + argument + "="
 	                    				+ URLEncoder.encode(value, "UTF-8") + "\">" + Utils.addEntities(values[j].value)
 	                    				+ "</a>");
-	                    	if (browseIndex.equals("author")) {
-								 if (ConfigurationManager.getBooleanProperty("stats.reports.author.itemshow")) {
-									out.print(ReportLinkManager.generateLink(pageContext, (HttpServletRequest)pageContext.getRequest(), value));
-								 }
-							}
 	                    }
                         else
                         {
@@ -758,9 +750,6 @@ public class ItemTag extends TagSupport
                 out.print(collections[i].getMetadata("name"));
                 //out.print("</a><br/>");
 				out.print("</a>");
-				if (ConfigurationManager.getBooleanProperty("stats.reports.collection.itemshow")) {
-					out.print(ReportLinkManager.generateLink(pageContext, (HttpServletRequest)pageContext.getRequest(), collections[i]));
-				}
 	            out.print("<br/>");
             }
 
