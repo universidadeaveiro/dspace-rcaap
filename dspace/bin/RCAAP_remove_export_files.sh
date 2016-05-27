@@ -20,7 +20,7 @@ TIME_TO_LIVE_HOURS=`cat dspace.cfg | grep "org.dspace.app.itemexport.life.span.h
 cd $PATH_OF_FILES_TO_REMOVE
 
 #TIME WILL BE IN MINUTES BUT IS DEFINED IN HOURS IN DSOACE.CFG
-del_time_in_minutes=(60 * $TIME_TO_LIVE_HOURS)
+del_time_in_minutes=$((60 * $TIME_TO_LIVE_HOURS))
 
 #delete files that match criteria
 find $PATH_OF_FILES_TO_REMOVE  -maxdepth 2 -mmin +$del_time_in_minutes -type f -name "*.zip" -exec rm -f {} \;
