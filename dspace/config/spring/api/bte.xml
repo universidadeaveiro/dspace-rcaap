@@ -109,7 +109,7 @@
 	            <!-- Specify here any data loaders you want to include in the submission lookup process.
 	            	Dataloaders must either extend the "NetworkSubmissionLookupDataLoader" abstract class
 	            	or conform to "FileDataLoader" interface of BTE -->
-				<entry key="renates" value-ref="renatesOnlineDataLoader"/>k
+				<entry key="renates" value-ref="renatesOnlineDataLoader"/>
 	            <entry key="pubmed" value-ref="pubmedOnlineDataLoader"/>
 	            <entry key="crossref" value-ref="crossRefOnlineDataLoader"/>
 	            <entry key="arxiv" value-ref="arXivOnlineDataLoader"/>
