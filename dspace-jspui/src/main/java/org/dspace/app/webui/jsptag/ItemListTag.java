@@ -103,6 +103,8 @@ public class ItemListTag extends TagSupport
 
     private static String authorField = "dc.contributor.*";
 
+    private static String rightsField = "dc.rights";
+
     private int authorLimit = -1;
 
     private transient SortOption sortOption = null;
@@ -474,6 +476,20 @@ public class ItemListTag extends TagSupport
                             + "</a>";
                         }
                         // format all other fields
+                        else if (field.equals(rightsField)) {
+                            String mImage = "/image/custom/undefined.png";
+                            String mdv = metadataArray[0].value;
+                            if (mdv.equals("openAccess"))
+                                mImage = "/image/custom/openAccess.png";
+                            else if (mdv.startsWith("embargoedAccess"))
+                                mImage = "/image/custom/embargoedAccess.png";
+                            else if (mdv.equals("closedAccess"))
+                                mImage = "/image/custom/closedAccess.png";
+                            else if (mdv.equals("restrictedAccess"))
+                                mImage = "/image/custom/restrictedAccess.png";
+                            metadata = "<img src=\"" + mImage + "\" title=\"" + mdv +"\" alt=\""
+                                    + mdv + "\" height=\"20px\" border=\"0\">";
+                        }
                         else
                         {
                             // limit the number of records if this is the author field (if
