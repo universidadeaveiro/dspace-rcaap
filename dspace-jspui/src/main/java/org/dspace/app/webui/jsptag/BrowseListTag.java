@@ -512,16 +512,16 @@ public class BrowseListTag extends TagSupport
                         }
                         //image for dc.rights
                         else if (field.equals(rightsField)) {
-                            String mImage = "/image/custom/undefined.png";
+                            String mImage = "image/custom/undefined.png";
                             String mdv = metadataArray[0].value;
                             if (mdv.equals("openAccess"))
-                                mImage = "/image/custom/openAccess.png";
+                                mImage = "image/custom/openAccess.png";
                             else if (mdv.startsWith("embargoedAccess"))
-                                mImage = "/image/custom/embargoedAccess.png";
+                                mImage = "image/custom/embargoedAccess.png";
                             else if (mdv.equals("closedAccess"))
-                                mImage = "/image/custom/closedAccess.png";
+                                mImage = "image/custom/closedAccess.png";
                             else if (mdv.equals("restrictedAccess"))
-                                mImage = "/image/custom/restrictedAccess.png";
+                                mImage = "image/custom/restrictedAccess.png";
                             metadata = "<img src=\"" + mImage + "\" title=\"" + mdv +"\" alt=\""
                                     + mdv + "\" height=\"20px\" border=\"0\">";
                         }
