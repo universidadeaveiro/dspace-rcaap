@@ -473,15 +473,24 @@ public class ItemTag extends TagSupport
                 String label = null;
                 try
                 {
-                    label = I18nUtil.getMessage("metadata."
-                            + ("default".equals(this.style) ? "" : this.style + ".") + field,
+                    if(field.equals("dc.date.issued") && item.getMetadata("dc.type").endsWith("Thesis"))
+                        label = I18nUtil.getMessage("metadata."
+                            + ("default".equals(this.style) ? "" : this.style + ".") + field + "_thesis",
                             context);
+                    else
+                        label = I18nUtil.getMessage("metadata."
+                                + ("default".equals(this.style) ? "" : this.style + ".") + field,
+                                context);
                 }
                 catch (MissingResourceException e)
                 {
                     // if there is not a specific translation for the style we
                     // use the default one
-                    label = LocaleSupport.getLocalizedMessage(pageContext,
+                    if(field.equals("dc.date.issued") && item.getMetadata("dc.type").endsWith("Thesis"))
+                        label = LocaleSupport.getLocalizedMessage(pageContext,
+                                "metadata." + field + "_thesis");
+                    else
+                        label = LocaleSupport.getLocalizedMessage(pageContext,
                             "metadata." + field);
                 }
 
