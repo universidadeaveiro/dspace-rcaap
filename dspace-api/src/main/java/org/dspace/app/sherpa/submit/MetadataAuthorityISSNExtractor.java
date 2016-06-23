@@ -32,7 +32,10 @@ public class MetadataAuthorityISSNExtractor implements ISSNItemExtractor
             Metadatum[] dcvalues = item.getMetadataByMetadataString(metadata);
             for (Metadatum dcvalue : dcvalues)
             {
-                values.add(dcvalue.authority);
+                String authority = dcvalue.authority;
+                if(authority !=null){
+                    values.add(authority);
+                }
             }
         }
         return values;
