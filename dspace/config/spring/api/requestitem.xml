@@ -29,6 +29,7 @@
 		<property name="fullNameMatadata" value="schema.element.qualifier" /> 
 		
 	-->	
+	<property name="emailMetadata" value="rcaap.contributor.authoremail" />
 	</bean>
 
     <!-- HelpDesk to instead get RequestItem emails-->
