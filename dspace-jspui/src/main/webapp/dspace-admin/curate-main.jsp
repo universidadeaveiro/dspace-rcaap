@@ -89,7 +89,9 @@
   <div class="input-group">
 	<input type="hidden" name="handle" value="<%= handle %>"/>
     <input class="btn btn-default" type="submit" name="submit_main_curate" value="<fmt:message key="jsp.tools.curate.perform.button"/>" />
+    <!--
     <input class="btn btn-default" type="submit" name="submit_main_queue" value="<fmt:message key="jsp.tools.curate.queue.button"/>" />
+    -->
     <input class="btn btn-default" type="submit" name="submit_main_cancel" value="<fmt:message key="jsp.dspace-admin.general.cancel"/>" />
   </div>
 </form>
