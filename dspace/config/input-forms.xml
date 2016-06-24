@@ -285,9 +285,9 @@
 			    <dc-element>contributor</dc-element>
 			    <dc-qualifier>authoremail</dc-qualifier>
 			    <repeatable>false</repeatable>
-			    <label>Contacto do autor(a) para envio de pedido de cópia </label>
+			    <label>Contacto do autor(a) para envio de pedido de c&oacute;pia </label>
 			    <input-type>onebox</input-type>
-			    <hint>De acordo com a informação anterior, se a tese for de acesso restrito ou embargado, insira aqui o e-mail do autor(a) da tese que para posterior envio de resposta a eventuais pedidos de cópia ou de acesso.</hint>
+			    <hint>De acordo com a informa&ccedil;&atilde;o anterior, se a tese for de acesso restrito ou embargado, insira aqui o e-mail do autor(a) da tese que para posterior envio de resposta a eventuais pedidos de c&oacute;pia ou de acesso.</hint>
 			    <required></required>
                     </field> 
                     <field>
@@ -520,9 +520,9 @@
 			    <dc-element>contributor</dc-element>
 			    <dc-qualifier>authoremail</dc-qualifier>
 			    <repeatable>false</repeatable>
-			    <label>Contacto do autor(a) para envio de pedido de cópia </label>
+			    <label>Contacto do autor(a) para envio de pedido de c&oacute;pia </label>
 			    <input-type>onebox</input-type>
-			    <hint>De acordo com a informação anterior, se a tese for de acesso restrito ou embargado, insira aqui o e-mail do autor(a) da tese que para posterior envio de resposta a eventuais pedidos de cópia ou de acesso.</hint>
+			    <hint>De acordo com a informa&ccedil;&atilde;o anterior, se a tese for de acesso restrito ou embargado, insira aqui o e-mail do autor(a) da tese que para posterior envio de resposta a eventuais pedidos de c&oacute;pia ou de acesso.</hint>
 			    <required></required>
                     </field> 
                     <field>
