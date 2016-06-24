@@ -109,6 +109,7 @@
 	            <!-- Specify here any data loaders you want to include in the submission lookup process.
 	            	Dataloaders must either extend the "NetworkSubmissionLookupDataLoader" abstract class
 	            	or conform to "FileDataLoader" interface of BTE -->
+	            <entry key="renates" value-ref="renatesOnlineDataLoader"/>	
 	            <entry key="pubmed" value-ref="pubmedOnlineDataLoader"/>
 	            <entry key="crossref" value-ref="crossRefOnlineDataLoader"/>
 	            <entry key="arxiv" value-ref="arXivOnlineDataLoader"/>
@@ -230,6 +231,8 @@
 
 	    <property name="extraMetadataToKeep">
 			<list>
+				<value>dc.identifier.tid</value>
+				<value>thesis.degree.name</value>
 				<value>dc.import.contributorauthor</value>
 				<value>dc.import.contributoreditor</value>
 				<value>dc.import.contributortranslator</value>
@@ -342,6 +345,22 @@
 				<entry key="SO" value="journal" />
 			</map>
 		</property>
+	</bean>
+	
+	<bean name="renatesInputMap" class="java.util.HashMap" scope="prototype">
+		<constructor-arg>
+			<map key-type="java.lang.String" value-type="java.lang.String">
+
+				<entry key="title" value="title" />
+				<entry key="authors" value="authors" />
+				<entry key="type" value="subtype" />
+				<entry key="keywords" value="mesh" />
+				<entry key="tid" value="tid" />
+				<entry key="curso" value="curso" />
+				<entry key="issued" value="issued" />
+
+			</map>
+		</constructor-arg>
 	</bean>
 
 	<!-- OAI Data Loader -->
@@ -564,6 +583,8 @@
 				<entry value="volume" key="degois.publication.volume" />
 				<entry value="issue" key="degois.publication.issue" />
 				<entry value="mesh" key="dc.subject" />
+				<entry value="tid" key="dc.identifier.tid" />
+				<entry value="curso" key="thesis.degree.name" />
 				
 				<!-- Not used - new metadata fields need to be declared for them in DSpace registry -->
 				<!-- 
