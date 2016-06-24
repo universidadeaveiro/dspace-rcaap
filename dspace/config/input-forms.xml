@@ -281,14 +281,14 @@
                         <hint>No caso da publica&#xe7;&#xE3;o ter financiamento FCT e de ter indicado um per&#xED;odo de embargo superior a 12 meses (nas ci&#234;ncias sociais e humanidades) ou 6 meses para as restantes &#xE1;reas indique as raz&#xF5;es.</hint>
                     </field>
                     <field>
-			    <dc-schema>rcaap</dc-schema>
-			    <dc-element>contributor</dc-element>
-			    <dc-qualifier>authoremail</dc-qualifier>
-			    <repeatable>false</repeatable>
-			    <label>Contacto do autor(a) para envio de pedido de c&oacute;pia </label>
-			    <input-type>onebox</input-type>
-			    <hint>De acordo com a informa&ccedil;&atilde;o anterior, se a tese for de acesso restrito ou embargado, insira aqui o e-mail do autor(a) da tese que para posterior envio de resposta a eventuais pedidos de c&oacute;pia ou de acesso.</hint>
-			    <required></required>
+                        <dc-schema>rcaap</dc-schema>
+                        <dc-element>contributor</dc-element>
+                        <dc-qualifier>authoremail</dc-qualifier>
+                        <repeatable>false</repeatable>
+                        <label>Contacto do autor(a) para envio de pedido de c&#xF3;pia </label>
+                        <input-type>onebox</input-type>
+                        <hint>De acordo com a informa&#xe7;&#xE3;o anterior, se a tese for de acesso restrito ou embargado, insira aqui o e-mail do autor(a) da tese  para posterior envio de resposta a eventuais pedidos de c&#xF3;pia ou de acesso.</hint>
+                        <required></required>
                     </field> 
                     <field>
                         <dc-schema>dc</dc-schema>
@@ -520,11 +520,11 @@
 			    <dc-element>contributor</dc-element>
 			    <dc-qualifier>authoremail</dc-qualifier>
 			    <repeatable>false</repeatable>
-			    <label>Contacto do autor(a) para envio de pedido de c&oacute;pia </label>
+			    <label>Contacto do autor(a) para envio de pedido de c&#xF3;pia </label>
 			    <input-type>onebox</input-type>
-			    <hint>De acordo com a informa&ccedil;&atilde;o anterior, se a tese for de acesso restrito ou embargado, insira aqui o e-mail do autor(a) da tese que para posterior envio de resposta a eventuais pedidos de c&oacute;pia ou de acesso.</hint>
+			    <hint>De acordo com a informa&#xe7;&#xE3;o anterior, se a tese for de acesso restrito ou embargado, insira aqui o e-mail do autor(a) da tese  para posterior envio de resposta a eventuais pedidos de c&#xF3;pia ou de acesso.</hint>
 			    <required></required>
-                    </field> 
+                    </field>
                     <field>
                         <dc-schema>dc</dc-schema>
                         <dc-element>rights</dc-element>
