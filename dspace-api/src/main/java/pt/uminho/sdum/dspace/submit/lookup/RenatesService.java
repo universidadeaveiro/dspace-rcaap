@@ -47,7 +47,7 @@ public class RenatesService {
 						//log.info("Renates URI: " + renatesURI);
 					}
 					else{
-						log.error("No URI for Renates foun in dsapce configuration - renatesURI");
+						log.error("No URI for Renates found in dsapce configuration - renatesURI");
 						throw new Exception("No URI for Renates found");
 					}
 
