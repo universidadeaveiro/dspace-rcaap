@@ -93,17 +93,26 @@
         </dependency>
 
         <dependency>
-            <groupId>org.dspace</groupId>
+            <groupId>org.dspace</groupId><dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jsp-api</artifactId>
+            <version>2.0</version>
+            <scope>provided</scope>              
+        </dependency>
+
             <artifactId>dspace-jspui</artifactId>
             <type>jar</type>
             <classifier>classes</classifier>
         </dependency>
 
+<!-- Added to permit the BrowseListTag be in here, as we add a change in BrowseListTag -->
         <dependency>
            <groupId>javax.servlet</groupId>
            <artifactId>servlet-api</artifactId>
            <scope>provided</scope>
         </dependency>
     </dependencies>
+
+	
 
 </project>
