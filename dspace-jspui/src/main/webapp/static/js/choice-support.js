@@ -149,10 +149,10 @@ function DSpaceChoiceLookup(url, field, formID, valueInput, authInput,
     var cOffset = 0;
     if (inputField != null)
         cOffset = $(inputField).cumulativeOffset();
-    var width = 600;  // XXX guesses! these should be params, or configured..
-    var height = 470;
+    var width = 800;  // XXX guesses! these should be params, or configured..
+    var height = 500;
     var left; var top;
-    if (window.screenX == null) {
+    /*if (window.screenX == null) {
         left = window.screenLeft + cOffset.left - (width/2);
         top = window.screenTop + cOffset.top - (height/2);
     } else {
@@ -160,7 +160,9 @@ function DSpaceChoiceLookup(url, field, formID, valueInput, authInput,
         top = window.screenY + cOffset.top - (height/2);
     }
     if (left < 0) left = 0;
-    if (top < 0) top = 0;
+    if (top < 0) top = 0;*/
+    top = 20;
+    left = 20;
     var pw = window.open(url, 'ignoreme',
          'width='+width+',height='+height+',left='+left+',top='+top+
          ',toolbar=no,menubar=no,location=no,status=no,resizable');
