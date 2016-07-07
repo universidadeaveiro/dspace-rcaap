@@ -58,8 +58,8 @@
 
 	<div class="input-group">
        	<label class="input-group-addon"><fmt:message key="jsp.dspace-admin.curate.main.info1"/>:</label>
-       	<input class="form-control" type="text" name="handle" value="<%= handle %>" size="20"/>
        	<span class="col-md-10"><fmt:message key="jsp.dspace-admin.curate.main.info2"/></span>
+        <input class="form-control" type="text" name="handle" value="<%= handle %>" size="20"/>
 	</div>
 	
 	
