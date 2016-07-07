@@ -92,7 +92,7 @@
             <type>war</type>
         </dependency>
 
-
+	<dependency>
             <artifactId>dspace-jspui</artifactId>
             <type>jar</type>
             <classifier>classes</classifier>
