@@ -93,6 +93,7 @@
         </dependency>
 
 	<dependency>
+	    <groupId>org.dspace</groupId>
             <artifactId>dspace-jspui</artifactId>
             <type>jar</type>
             <classifier>classes</classifier>
