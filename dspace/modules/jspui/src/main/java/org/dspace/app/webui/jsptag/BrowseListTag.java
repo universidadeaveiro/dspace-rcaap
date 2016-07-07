@@ -42,9 +42,6 @@ import java.net.URLEncoder;
 import java.sql.SQLException;
 import java.util.StringTokenizer;
 import org.dspace.content.authority.MetadataAuthorityManager;
-//UM
-import pt.keep.dspace.report.ReportLinkManager;
-//END UM
 
 /**
  * Tag for display a list of items
@@ -592,12 +589,6 @@ public class BrowseListTag extends TagSupport
                                         startLink = startLink + "\">";
                                     }
                             		endLink = "</a>";
-                            		if (browseType[colIdx].equals("author")
-										&& ConfigurationManager
-											.getBooleanProperty("stats.reports.author.fulllist")) {
-										endLink += ReportLinkManager.generateLink(
-										pageContext, hrq, value);
-									}
                             	}
                             	sb.append(startLink);
                                 sb.append(Utils.addEntities(metadataArray[j].value));
