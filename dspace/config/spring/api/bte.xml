@@ -583,7 +583,6 @@
 				
 				<!--Added -->
 				<!--<entry value="publisher" key="dc.publisher" />--> <!-- Already exists-->
-				<entry value="publisher" key="dc.publisher" />
 				<entry value="titleAlternative" key="dc.title.alternative" />
 				<entry value="firstpage" key="degois.publication.firstPage" />
 				<entry value="lastpage" key="degois.publication.lastPage" />
