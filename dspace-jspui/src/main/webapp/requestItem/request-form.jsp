@@ -23,6 +23,7 @@
 
 <%@ page import="org.dspace.app.webui.servlet.RequestItemServlet"%>
 <%@ page import="javax.servlet.jsp.jstl.fmt.LocaleSupport" %>
+<script src='https://www.google.com/recaptcha/api.js'></script>
 
 <%
 	request.setCharacterEncoding("UTF-8");
@@ -104,6 +105,7 @@
          <input type="hidden" name="handle" value='<%= handle %>' />
          <input type="hidden" name="bitstream-id" value='<%= bitstream_id %>' />
          <input type="hidden" name="step" value="<%=RequestItemServlet.ENTER_FORM_PAGE %>" />
+        <div class="g-recaptcha" data-sitekey="6LfOliQTAAAAALClMSQsWexcm9Dr2dgsCytkAePl"></div>
         <div class="btn btn-group col-md-4 pull-right row">
          <a class="btn btn-default col-md-6" href="<%=request.getContextPath()%>/handle/<%=handle %>"><fmt:message key="jsp.request.item.request-form.cancel" /></a>
          <button type="submit" name="submit" class="btn btn-primary col-md-6" value="true"><fmt:message key="jsp.request.item.request-form.go"/></button>
