@@ -347,6 +347,12 @@
 		</property>
 	</bean>
 	
+	<!-- Renates TID Online data loader -->
+		<bean id="renatesOnlineDataLoader" class="pt.uminho.sdum.dspace.submit.lookup.RenatesOnlineDataLoader">
+			<property name="fieldMap" ref="renatesInputMap" />
+	
+	</bean>
+	
 	<bean name="renatesInputMap" class="java.util.HashMap" scope="prototype">
 		<constructor-arg>
 			<map key-type="java.lang.String" value-type="java.lang.String">
