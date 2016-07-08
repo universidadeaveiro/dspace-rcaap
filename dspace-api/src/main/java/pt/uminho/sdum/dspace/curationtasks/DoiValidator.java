@@ -36,7 +36,7 @@ public class DoiValidator extends Distributor {
                     sb.append(handle);
                     sb.append("\" target=\"_blank\">");
                     sb.append(handle);
-                    sb.append("</a> tem um DOI inválido <br>");
+                    sb.append("</a> pode ter um DOI inválido <br>");
                 }
             //}
         }
