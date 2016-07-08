@@ -14,25 +14,26 @@ import java.util.Set;
  */
 abstract class Distributor extends AbstractCurationTask {
 
+    private static String def="Não foram encontrados quaisquer problemas";
+
     @Override
     public int perform(DSpaceObject dso) throws IOException {
         try {
-
+            String res;
             if (dso instanceof Item) {
-                setResult(processItem((Item) dso));
+                putResult(processItem((Item) dso));
                 return 0;
 
             } else if (dso instanceof Community) {
-                setResult(processCommunity((Community) dso, new HashSet<Collection>()));
+                putResult(processCommunity((Community) dso, new HashSet<Collection>()));
                 return 0;
 
             } else if (dso instanceof Collection) {
-
-                setResult(processCollection((Collection) dso, new HashSet<Collection>()));
+                putResult(processCollection((Collection) dso, new HashSet<Collection>()));
                 return 0;
 
             } else if (dso instanceof Site) {
-                setResult(processSite());
+                putResult(processSite());
                 return 0;
             } else {
                 setResult("Task must be applied to Collection or Community or Site");
@@ -44,6 +45,12 @@ abstract class Distributor extends AbstractCurationTask {
         return 1;
     }
 
+    private void putResult(String res){
+        if(res!=null && !res.equals(""))
+            setResult(res);
+        else
+            setResult(def);
+    }
 
     private String processSite() throws SQLException {
         StringBuilder res = new StringBuilder();

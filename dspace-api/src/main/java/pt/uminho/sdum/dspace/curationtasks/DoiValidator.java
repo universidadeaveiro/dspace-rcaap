@@ -22,14 +22,14 @@ public class DoiValidator extends Distributor {
 
 
         if (doi != null) {
-            if (!doi.startsWith("http://dx.doi.org/")) {
+           /* if (!doi.startsWith("http://dx.doi.org/")) {
                 sb.append("<a href=\"http://hdl.handle.net/");
                 sb.append(handle);
                 sb.append("\" target=\"_blank\">");
                 sb.append(handle);
                 sb.append("</a> não tem o prefixo do DOI (http://dx.doi.org/)  <br>");
                 //got regex from http://blog.crossref.org/2015/08/doi-regular-expressions.html
-            } else {
+            } else { */
                 String sub = doi.substring(18);
                 if (!sub.matches("^10.\\d{4,9}/[-._;()/:a-zA-Z0-9]+$")) {
                     sb.append("<a href=\"http://hdl.handle.net/");
@@ -38,7 +38,7 @@ public class DoiValidator extends Distributor {
                     sb.append(handle);
                     sb.append("</a> pode ter um DOI inválido <br>");
                 }
-            }
+            //}
         }
 
         return sb.toString();

@@ -34,7 +34,7 @@ public class CheckDuplicates extends AbstractCurationTask {
             }
             return 0;
         } else {
-            setResult("Task must be applied to Site");
+            setResult("A tarefa deve ser aplicada ao site inteiro");
             return 2;
         }
     }
