@@ -1,16 +1,14 @@
 package pt.uminho.sdum.dspace.curationtasks;
 
 import org.dspace.content.*;
+import org.dspace.content.Collection;
 import org.dspace.curate.AbstractCurationTask;
 import org.dspace.curate.Curator;
 import org.dspace.curate.Distributive;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 /**
  * Naive approach, memory heavy
@@ -33,8 +31,24 @@ public class CheckDuplicates extends AbstractCurationTask {
                 e.printStackTrace();
             }
             return 0;
+        } else if (dso instanceof Community) {
+            try {
+                List<Item> col = collectAllItemsFromComunnity((Community) dso);
+                setResult(checkDuplicates(col));
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            return 0;
+        } else if (dso instanceof Collection) {
+            try {
+                List<Item> col = collectAllItemsFromCollection((Collection) dso);
+                setResult(checkDuplicates(col));
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            return 0;
         } else {
-            setResult("A tarefa deve ser aplicada ao site inteiro");
+            setResult("A tarefa deve ser aplicada ao site, comunidade ou coleção");
             return 2;
         }
     }
@@ -43,7 +57,7 @@ public class CheckDuplicates extends AbstractCurationTask {
         StringBuilder sb = new StringBuilder("<br>");
         Set<Integer> processed = new HashSet<>();
         for (int i = 0; i < col.size(); ++i) {
-            if(!processed.contains(i)) {
+            if (!processed.contains(i)) {
                 Item itemI = col.get(i);
                 for (int j = i + 1; j < col.size(); ++j) {
                     if (!processed.contains(j)) {
@@ -92,18 +106,37 @@ public class CheckDuplicates extends AbstractCurationTask {
                     dateI.trim().equals(dateJ.trim());
     }
 
+
+    private List<Item> collectAllItemsFromCollection(Collection col) {
+        List<Item> res = new ArrayList<>();
+        try {
+            ItemIterator it = col.getAllItems();
+            if (it != null)
+                while (it.hasNext())
+                    res.add(it.next());
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return res;
+    }
+
+    private List<Item> collectAllItemsFromComunnity(Community com) {
+        List<Item> res = new ArrayList<>();
+        try {
+            for (Collection col : com.getAllCollections())
+                res.addAll(collectAllItemsFromCollection(col));
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return res;
+    }
+
     private List<Item> collectAllItems() {
         List<Item> res = new ArrayList<>();
         try {
             for (Community com : Community.findAllTop(Curator.curationContext()))
-                for (Collection col : com.getAllCollections()) {
-                    ItemIterator it = col.getAllItems();
-                    if (it != null)
-                        while (it.hasNext())
-                            res.add(it.next());
-                }
-
-
+                res.addAll(collectAllItemsFromComunnity(com));
         } catch (SQLException e) {
             e.printStackTrace();
         }
