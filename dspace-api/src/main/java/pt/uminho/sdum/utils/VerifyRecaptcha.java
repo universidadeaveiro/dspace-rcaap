@@ -1,6 +1,8 @@
 package pt.uminho.sdum.utils;
 
 
+import org.dspace.core.ConfigurationManager;
+
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -16,10 +18,13 @@ import javax.net.ssl.HttpsURLConnection;
 public class VerifyRecaptcha {
 
     public static final String url = "https://www.google.com/recaptcha/api/siteverify";
-    private static final String secret = "6LfOliQTAAAAAO3gKRe5J-rNfG7DSHbdua71R57h";
+    private static final String secret = ConfigurationManager.getProperty("rcaap.google.recaptcha.secret");
     private final static String USER_AGENT = "Mozilla/5.0";
 
     public static boolean verify(String gRecaptchaResponse) throws IOException {
+        if(secret==null || secret.equals(""))
+            return true;
+
         if (gRecaptchaResponse == null || "".equals(gRecaptchaResponse)) {
             return false;
         }
