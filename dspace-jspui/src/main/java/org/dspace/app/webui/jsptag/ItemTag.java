@@ -544,7 +544,7 @@ public class ItemTag extends TagSupport
                         if (isLink)
                         {
                             out.print("<a " + (qualifier.equals("doi")?"target=\"_blank\"":"")
-                                    + "href=\"" + values[j].value + "\">"
+                                    + " href=\"" + values[j].value + "\">"
                                     + Utils.addEntities(values[j].value) + "</a>");
                         }
                         else if (isDate)
@@ -564,7 +564,7 @@ public class ItemTag extends TagSupport
                             {
                                 // Already a URL, print as if it was a regular link
                                 out.print("<a" + (qualifier.equals("doi")?"target=\"_blank\"":"")
-                                        + "href=\"" + value + "\">"
+                                        + " href=\"" + value + "\">"
                                         + Utils.addEntities(value) + "</a>");
                             }
                             else
@@ -594,8 +594,8 @@ public class ItemTag extends TagSupport
                                     }
 
                                     String url = urn2baseurl.get(foundUrn);
-                                    out.print("<a" +  (qualifier.equals("doi")?"target=\"_blank\"":"")
-                                            + "href=\"" + url
+                                    out.print("<a " +  (qualifier.equals("doi")?"target=\"_blank\"":"")
+                                            + " href=\"" + url
                                             + value + "\">"
                                             + Utils.addEntities(values[j].value)
                                             + "</a>");
