@@ -18,7 +18,7 @@ public class Tid extends Distributor {
     private static final int YMD = 1;
     private static final int YM = 2;
     private static final int Y = 3;
-
+    private static final DateValidator dv = new DateValidator("2013-08-07", "2013-07", "2012");
     // Check if THESIS deposited after 2013 has TID
     @Override
     protected String processItem(Item item) throws SQLException {
@@ -31,10 +31,9 @@ public class Tid extends Distributor {
         String tid = item.getMetadata("dc.identifier.tid");
         String sDate = item.getMetadata("dc.date.issued");
 
-        DateValidator dv = new DateValidator("2013-08-07", "2013-07", "2012");
 
         if (type != null && (type.equals("masterThesis") || type.equals("doctoralThesis"))) {
-            if (dv.verifyAfter(sDate) && (tid == null || tid.isEmpty())) {
+            if (sDate != null && dv.verifyAfter(sDate) && (tid == null || tid.isEmpty())) {
                 if (item.isArchived() && !item.isWithdrawn()) {
                     res.append("<a href=\"http://hdl.handle.net/");
                     res.append(handle);
