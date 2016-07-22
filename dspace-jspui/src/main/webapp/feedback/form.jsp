@@ -23,7 +23,7 @@
 <script src='https://www.google.com/recaptcha/api.js'></script>
 
 <%
-    boolean problem = (request.getParameter("feedback.problem") != null);
+    boolean problem = (request.getAttribute("feedback.problem") != null);
     String email = request.getParameter("email");
 
     if (email == null || email.equals("")) {
@@ -57,7 +57,7 @@
         if (problem) {
     %>
     <%-- <p><strong>Please fill out all of the information below.</strong></p> --%>
-    <p><strong><fmt:message key="jsp.feedback.form.text2"/></strong></p>
+    <div class="alert alert-warning"><p><strong><fmt:message key="jsp.feedback.form.text2"/></strong></p></div>
     <%
         }
     %>
