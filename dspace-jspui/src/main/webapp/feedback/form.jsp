@@ -17,33 +17,31 @@
 
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ page import="org.apache.commons.lang.StringEscapeUtils" %>
+<%@ page import="org.dspace.core.ConfigurationManager" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://www.dspace.org/dspace-tags.tld" prefix="dspace" %>
+<script src='https://www.google.com/recaptcha/api.js'></script>
 
 <%
     boolean problem = (request.getParameter("feedback.problem") != null);
     String email = request.getParameter("email");
 
-    if (email == null || email.equals(""))
-    {
+    if (email == null || email.equals("")) {
         email = (String) request.getAttribute("authenticated.email");
     }
 
-    if (email == null)
-    {
+    if (email == null) {
         email = "";
     }
 
     String feedback = request.getParameter("feedback");
-    if (feedback == null)
-    {
+    if (feedback == null) {
         feedback = "";
     }
 
     String fromPage = request.getParameter("fromPage");
-    if (fromPage == null)
-    {
-		fromPage = "";
+    if (fromPage == null) {
+        fromPage = "";
     }
 %>
 
@@ -55,29 +53,46 @@
     DSpace system. Your comments are appreciated!</p> --%>
     <p><fmt:message key="jsp.feedback.form.text1"/></p>
 
-<%
-    if (problem)
-    {
-%>
-        <%-- <p><strong>Please fill out all of the information below.</strong></p> --%>
-        <p><strong><fmt:message key="jsp.feedback.form.text2"/></strong></p>
-<%
-    }
-%>
+    <%
+        if (problem) {
+    %>
+    <%-- <p><strong>Please fill out all of the information below.</strong></p> --%>
+    <p><strong><fmt:message key="jsp.feedback.form.text2"/></strong></p>
+    <%
+        }
+    %>
     <form action="<%= request.getContextPath() %>/feedback" method="post">
         <center>
             <table>
                 <tr>
-                    <td class="submitFormLabel"><label for="temail"><fmt:message key="jsp.feedback.form.email"/></label></td>
-                    <td><input type="text" name="email" id="temail" size="50" value="<%=StringEscapeUtils.escapeHtml(email)%>" /></td>
+                    <td class="submitFormLabel"><label for="temail"><fmt:message key="jsp.feedback.form.email"/></label>
+                    </td>
+                    <td><input type="text" name="email" id="temail" size="50"
+                               value="<%=StringEscapeUtils.escapeHtml(email)%>"/></td>
                 </tr>
                 <tr>
-                    <td class="submitFormLabel"><label for="tfeedback"><fmt:message key="jsp.feedback.form.comment"/></label></td>
-                    <td><textarea name="feedback" id="tfeedback" rows="6" cols="50"><%=StringEscapeUtils.escapeHtml(feedback)%></textarea></td>
+                    <td class="submitFormLabel"><label for="tfeedback"><fmt:message
+                            key="jsp.feedback.form.comment"/></label></td>
+                    <td><textarea name="feedback" id="tfeedback" rows="6"
+                                  cols="50"><%=StringEscapeUtils.escapeHtml(feedback)%></textarea></td>
                 </tr>
+
+                <%
+                    String key = ConfigurationManager.getProperty("rcaap.google.recaptcha.sitekey");
+                    if (key != null && !key.equals("")) {
+                %>
+                <tr>
+                    <td>
+                        <div align="center" class="g-recaptcha" data-sitekey="<%=key%>"></div>
+                    </td>
+                </tr>
+                <%
+                    }
+                %>
+
                 <tr>
                     <td colspan="2" align="center">
-                    <input type="submit" name="submit" value="<fmt:message key="jsp.feedback.form.send"/>" />
+                        <input type="submit" name="submit" value="<fmt:message key="jsp.feedback.form.send"/>"/>
                     </td>
                 </tr>
             </table>

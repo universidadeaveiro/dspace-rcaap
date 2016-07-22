@@ -27,6 +27,7 @@ import org.dspace.core.Email;
 import org.dspace.core.I18nUtil;
 import org.dspace.core.LogManager;
 import org.dspace.eperson.EPerson;
+import pt.uminho.sdum.utils.VerifyRecaptcha;
 
 /**
  * Servlet for handling user feedback
@@ -91,12 +92,18 @@ public class FeedbackServlet extends DSpaceServlet
         // Has the user just posted their feedback?
         if (request.getParameter("submit") != null)
         {
+
+            String gRecaptchaResponse = request
+                    .getParameter("g-recaptcha-response");
+            boolean verify = VerifyRecaptcha.verify(gRecaptchaResponse);
+
             EmailValidator ev = EmailValidator.getInstance();
             String feedback = request.getParameter("feedback");
 
             // Check all data is there
             if ((formEmail == null) || formEmail.equals("")
-                    || (feedback == null) || feedback.equals("") || !ev.isValid(formEmail))
+                    || (feedback == null) || feedback.equals("") || !ev.isValid(formEmail)
+                    || !verify)
             {
                 log.info(LogManager.getHeader(context, "show_feedback_form",
                         "problem=true"));
