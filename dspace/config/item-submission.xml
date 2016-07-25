@@ -108,7 +108,7 @@
      <!-- a special step, it is currently NEVER editable in a workflow.      -->                               
      <step id="complete">
        <heading>submit.progressbar.complete</heading>
-       <processing-class>pt.uminho.sdum.submit.step.AccessStep</processing-class>
+       <processing-class>org.dspace.submit.step.CompleteStep</processing-class>
        <jspui-binding>org.dspace.app.webui.submit.step.JSPCompleteStep</jspui-binding>
        <workflow-editable>false</workflow-editable>
      </step>

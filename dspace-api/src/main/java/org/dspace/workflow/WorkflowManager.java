@@ -43,6 +43,7 @@ import org.dspace.storage.rdbms.TableRow;
 import org.dspace.storage.rdbms.TableRowIterator;
 import org.dspace.usage.UsageWorkflowEvent;
 import org.dspace.utils.DSpace;
+import pt.uminho.sdum.submit.RestrictAccess;
 
 /**
  * Workflow state machine
@@ -722,6 +723,7 @@ public class WorkflowManager
                 + collection.getID()));
 
         InstallItem.installItem(c, wfi);
+        RestrictAccess.restrictItemAccess(c,item);
 
         // Log the event
         log.info(LogManager.getHeader(c, "install_item", "workflow_id="
