@@ -109,7 +109,7 @@
 	            <!-- Specify here any data loaders you want to include in the submission lookup process.
 	            	Dataloaders must either extend the "NetworkSubmissionLookupDataLoader" abstract class
 	            	or conform to "FileDataLoader" interface of BTE -->
-				<entry key="renates" value-ref="renatesOnlineDataLoader"/>
+	            <entry key="renates" value-ref="renatesOnlineDataLoader"/>	
 	            <entry key="pubmed" value-ref="pubmedOnlineDataLoader"/>
 	            <entry key="crossref" value-ref="crossRefOnlineDataLoader"/>
 	            <entry key="arxiv" value-ref="arXivOnlineDataLoader"/>
@@ -121,8 +121,8 @@
 	            <entry key="bibtex" value-ref="bibTeXDataLoader"/>
 	            <entry key="ris" value-ref="risDataLoader"/>
 	            <entry key="endnote" value-ref="endnoteDataLoader"/>
-	            <entry key="csv" value-ref="csvDataLoader"/>
-	            <entry key="tsv" value-ref="tsvDataLoader"/>
+	            <!--<entry key="csv" value-ref="csvDataLoader"/>
+	            <entry key="tsv" value-ref="tsvDataLoader"/>-->
 			</map>
 	    </property>
 	</bean>
@@ -346,13 +346,13 @@
 			</map>
 		</property>
 	</bean>
-
+	
 	<!-- Renates TID Online data loader -->
-	<bean id="renatesOnlineDataLoader" class="pt.uminho.sdum.dspace.submit.lookup.RenatesOnlineDataLoader">
-		<property name="fieldMap" ref="renatesInputMap" />
-
+		<bean id="renatesOnlineDataLoader" class="pt.uminho.sdum.dspace.submit.lookup.RenatesOnlineDataLoader">
+			<property name="fieldMap" ref="renatesInputMap" />
+	
 	</bean>
-
+	
 	<bean name="renatesInputMap" class="java.util.HashMap" scope="prototype">
 		<constructor-arg>
 			<map key-type="java.lang.String" value-type="java.lang.String">
@@ -591,7 +591,7 @@
 				<entry value="mesh" key="dc.subject" />
 				<entry value="tid" key="dc.identifier.tid" />
 				<entry value="curso" key="thesis.degree.name" />
-
+				
 				<!-- Not used - new metadata fields need to be declared for them in DSpace registry -->
 				<!-- 
 				<entry value="url" key="" />
