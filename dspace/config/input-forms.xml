@@ -287,7 +287,7 @@
                         <repeatable>false</repeatable>
                         <label>Contacto do autor(a) para envio de pedido de c&#xF3;pia </label>
                         <input-type>onebox</input-type>
-                        <hint>De acordo com a informa&#xe7;&#xE3;o anterior, se a tese for de acesso restrito ou embargado, insira aqui o e-mail do autor(a) da tese  para posterior envio de resposta a eventuais pedidos de c&#xF3;pia ou de acesso.</hint>
+                        <hint>De acordo com a informa&#xe7;&#xE3;o anterior, se o registo for de acesso restrito ou embargado, insira aqui o e-mail do autor(a) para posterior envio de resposta a eventuais pedidos de c&#xF3;pia ou de acesso.</hint>
                         <required></required>
                     </field> 
                     <field>
@@ -485,7 +485,7 @@
                         <label>Projeto ou Bolsa de Financiamento</label>
                         <input-type>onebox</input-type>
                         <hint>Caso o trabalho tenha resultado de bolsa ou projeto(s) financiado(s) pela Comiss&#xE3;o Europeia (FP7, H2020, ERC), Funda&#xe7;&#xE3;o para a Ci&#234;ncia e Tecnologia ou Wellcome Trust, identifique esse(s) projeto(s) ou bolsa aqui. Essa identifica&#xe7;&#xE3;o &#xE9; geralmente um requisito dos financiadores.
-    Para identificar o(s) projeto(s) ou bolsa insira um dos seus elementos identificativos (n&#xFA;mero, nome, acr&#xf3;nimo ou refer&#xEA;ncia) e selecione da lista que lhe &#xE9; apresentada.</hint>
+    Para identificar o(s) projeto(s) ou bolsa insira um dos seus elementos identificativos (n&#xFA;mero, nome, acr&#xf3;nimo ou refer&#xEA;ncia) e selecione da lista que lhe &#xE9; apresentada. &#xfa;vidas ou mais informações aceda &lt;a href="http://projeto.rcaap.pt/index.php/lang-pt/como-auto-arquivar-documentos/politica-fct" target="_blank"&gt;aqui&lt;/a&gt;</hint>
                     </field>
                     <field>
                         <dc-schema>dc</dc-schema>
