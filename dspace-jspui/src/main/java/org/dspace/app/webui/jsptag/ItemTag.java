@@ -473,7 +473,8 @@ public class ItemTag extends TagSupport
                 String label = null;
                 try
                 {
-                    if(field.equals("dc.date.issued") && item.getMetadata("dc.type").endsWith("Thesis"))
+                    String dctype =  item.getMetadata("dc.type");
+                    if(field.equals("dc.date.issued") && dctype != null  && dctype.endsWith("Thesis"))
                         label = I18nUtil.getMessage("metadata."
                             + ("default".equals(this.style) ? "" : this.style + ".") + field + "_thesis",
                             context);
@@ -486,7 +487,8 @@ public class ItemTag extends TagSupport
                 {
                     // if there is not a specific translation for the style we
                     // use the default one
-                    if(field.equals("dc.date.issued") && item.getMetadata("dc.type").endsWith("Thesis"))
+                    String dctype =  item.getMetadata("dc.type");
+                    if(field.equals("dc.date.issued") && dctype != null  && dctype.endsWith("Thesis"))
                         label = LocaleSupport.getLocalizedMessage(pageContext,
                                 "metadata." + field + "_thesis");
                     else
