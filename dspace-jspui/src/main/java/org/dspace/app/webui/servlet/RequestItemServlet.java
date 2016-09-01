@@ -26,6 +26,7 @@ import org.dspace.storage.bitstore.BitstreamStorageManager;
 import org.dspace.storage.rdbms.DatabaseManager;
 import org.dspace.storage.rdbms.TableRow;
 import org.dspace.utils.DSpace;
+import pt.uminho.sdum.utils.VerifyRecaptcha;
 
 import javax.mail.MessagingException;
 import javax.servlet.ServletException;
@@ -175,6 +176,10 @@ public class RequestItemServlet extends DSpaceServlet
 
 			if (request.getParameter("submit") != null)
 			{
+				String gRecaptchaResponse = request
+						.getParameter("g-recaptcha-response");
+				boolean verify = VerifyRecaptcha.verify(gRecaptchaResponse);
+
 				String reqname = request.getParameter("reqname");
 				String coment = request.getParameter("coment");
 				if (coment == null || coment.equals(""))
@@ -183,7 +188,8 @@ public class RequestItemServlet extends DSpaceServlet
 
 				// Check all data is there
 				if (requesterEmail == null || requesterEmail.equals("") ||
-					reqname == null || reqname.equals(""))
+					reqname == null || reqname.equals("") ||
+                        !verify)
 				{
 					request.setAttribute("handle",handle);
 					request.setAttribute("bitstream-id", bitstream_id);
@@ -255,6 +261,7 @@ public class RequestItemServlet extends DSpaceServlet
 						""), me);
 				   JSPManager.showInternalError(request, response);
 				}
+
 			}
 			else
 			{
