@@ -82,8 +82,13 @@ public class RenatesService {
                 inDoc.getDocumentElement().normalize();
 
 
-                NodeList nList = inDoc.getElementsByTagName("Table");
-                Node nNode = nList.item(0);
+                /*NodeList nList = inDoc.getElementsByTagName("Table");
+				Node nNode = nList.item(0);*/
+				//Workaround to the xml response from RENATES
+				NodeList nList = inDoc.getElementsByTagName("Tese");
+				Node n1 = nList.item(0);
+				nList = n1.getChildNodes();
+				Node nNode = nList.item(1);
                 if(nNode.getNodeType() == Node.ELEMENT_NODE )
                     r = RenatesUtils.convertRenatesDomToRecord((Element) nNode);
 
