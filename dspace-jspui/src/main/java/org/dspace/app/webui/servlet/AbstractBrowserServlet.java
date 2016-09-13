@@ -107,7 +107,7 @@ public abstract class AbstractBrowserServlet extends DSpaceServlet
 				}
 				/*
 				END OF CODEDED ADDED TO WORKAROUND
-				*
+				*/
 
             	if (StringUtils.isNotBlank(month) && !"-1".equals(month)) {
             		Integer.valueOf(month);
