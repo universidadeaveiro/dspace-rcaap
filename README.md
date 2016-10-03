@@ -1,3 +1,5 @@
+[![Build Status](http://testes.jenkins.rcaap.pt/buildStatus/icon?job=GITLAB - PUBLIC DSPACE)](http://testes.jenkins.rcaap.pt/job/GITLAB - PUBLIC DSPACE)
+
 To add piwik (statistics access for openaire)
 
 In the footer add the following code:
