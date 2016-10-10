@@ -297,7 +297,7 @@
                         <repeatable>false</repeatable>
                         <label>Licen&#xe7;a Creative Commons</label>
                         <input-type value-pairs-name="creative_commons">dropdown</input-type>
-                        <hint>Associe uma licen&#xe7;a Creative Commons 4.0 Internacional ao seu trabalho, escolhendo-a da lista apresentada. No caso de trabalhos financiados pela FCT o uso da licen&#xe7;a CC-BY &#xE9; recomendado, mas torna-se obrigat&#xf3;rio caso a publica&#xe7;&#xE3;o tenha tido Custos de Processamento da Publica&#xe7;&#xE3;o (CPP ou APC) suportados por verbas da FCT. Saiba mais &lt;a href="http://projeto.rcaap.pt/index.php/lang-pt/como-auto-arquivar-documentos/politica-fct" target="_blank" &gt;aqui&lt;/a&gt;</hint>
+                        <hint>Associe uma licen&#xe7;a &lt;a href="https://creativecommons.org/licenses/" target="_blank" &gt;Creative Commons 4.0 Internacional&lt;/a&gt; ao seu trabalho, escolhendo-a da lista apresentada. No caso de trabalhos financiados pela FCT o uso da licen&#xe7;a CC-BY &#xE9; recomendado, mas torna-se obrigat&#xf3;rio caso a publica&#xe7;&#xE3;o tenha tido Custos de Processamento da Publica&#xe7;&#xE3;o (CPP ou APC) suportados por verbas da FCT. Saiba mais &lt;a href="http://projeto.rcaap.pt/index.php/lang-pt/como-auto-arquivar-documentos/politica-fct" target="_blank" &gt;aqui&lt;/a&gt;</hint>
                     </field>
                     <field>
                         <dc-schema>dc</dc-schema>
@@ -532,7 +532,7 @@
                         <repeatable>false</repeatable>
                         <label>Licen&#xe7;a Creative Commons</label>
                         <input-type value-pairs-name="creative_commons">dropdown</input-type>
-                        <hint>Associe uma licen&#xe7;a Creative Commons 4.0 Internacional ao seu trabalho, escolhendo-a da lista apresentada. No caso de trabalhos financiados pela FCT o uso da licen&#xe7;a CC-BY &#xE9; recomendado.</hint>
+                        <hint>Associe uma licen&#xe7;a &lt;a href="https://creativecommons.org/licenses/" target="_blank" &gt;Creative Commons 4.0 Internacional&lt;/a&gt; ao seu trabalho, escolhendo-a da lista apresentada. No caso de trabalhos financiados pela FCT o uso da licen&#xe7;a CC-BY &#xE9; recomendado.</hint>
                     </field>
                     <field>
                         <dc-schema>dc</dc-schema>
