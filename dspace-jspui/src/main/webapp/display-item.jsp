@@ -337,7 +337,7 @@
 %>
 <br/>
 <!-- && !isAdmin removed. sharing bar will appear even to the Administration zone -->
-<% if (ConfigurationManager.getBooleanProperty("sharing.active", false) && workspace_id != null) { %>
+<% if (handle != null && ConfigurationManager.getBooleanProperty("sharing.active", false)) { %>
 	<% // code
 	SharingManager manager = new SharingManager(new ItemWrapper(item));
 	%>
