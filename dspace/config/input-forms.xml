@@ -201,6 +201,17 @@
                         <required>Insira o idioma do documento</required>
                     </field>
                     <field>
+			    <dc-schema>dc</dc-schema>
+			    <dc-element>description</dc-element>
+			    <dc-qualifier>version</dc-qualifier>
+			    <repeatable>false</repeatable>
+			    <label>Estado da Publica&#xe7;&#xE3;o</label>
+			    <input-type value-pairs-name="dc_publicationstatus">dropdown</input-type>
+			    <hint>Indique o estado atual da publica&#xe7;&#xE3;o</hint>
+			    <required>Insira o Estado da Publica&#xe7;&#xE3;o</required>
+                   </field>
+                    
+                    <field>
                         <dc-schema>degois</dc-schema>
                         <dc-element>publication</dc-element>
                         <dc-qualifier>title</dc-qualifier>
@@ -790,5 +801,37 @@
                     <stored-value>N/A</stored-value>
                 </pair>
             </value-pairs>
+            
+             <value-pairs value-pairs-name="dc_publicationstatus" name="publication_version">
+		<pair>
+		    	<displayed-value>Selecione o estado</displayed-value>
+		     	<stored-value></stored-value>
+		</pair>
+		<pair>
+			<displayed-value>N/A</displayed-value>
+			<stored-value>N/A</stored-value>
+		</pair>
+		<pair>
+			<displayed-value>Publicado</displayed-value>
+			<stored-value>info:eu-repo/semantics/publishedVersion</stored-value>
+		</pair>
+		<pair>
+			<displayed-value>Aceite para publica&#xe7;&#xE3;o</displayed-value>
+			<stored-value>info:eu-repo/semantics/acceptedVersion</stored-value>
+		</pair>
+		<pair>
+			<displayed-value>Submetido para publica&#xe7;&#xE3;o</displayed-value>
+			<stored-value>info:eu-repo/semantics/submittedVersion</stored-value>
+		</pair>
+		<pair>
+			<displayed-value>N&#xE3;o publicado</displayed-value>
+			<stored-value>info:eu-repo/semantics/draft</stored-value>
+		</pair>
+		<pair>
+			<displayed-value>Atualiza&#xe7;&#xE3;o</displayed-value>
+			<stored-value>info:eu-repo/semantics/updatedVersion</stored-value>
+		</pair>
+	</value-pairs>
+            
         </form-value-pairs>
 </input-forms>
