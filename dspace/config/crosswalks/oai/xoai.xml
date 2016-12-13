@@ -59,29 +59,55 @@
             </Description>
         </Context>
 
-        <!--
-            OpenAIRE Guidelines 1.1:
-
-            - https://guidelines.openaire.eu/en/latest/
-
-            There is a limitation over the embargoedEndDate parameter:
-
-            - Predefined DSpace fields don't allow to set this up with a default.
+         <!--
+	            OpenAIRE Guidelines 3.0:
+	
+	            - https://guidelines.openaire.eu/
+	
+	            There is a limitation over the embargoedEndDate parameter:
+	
+	            - Predefined DSpace fields don't allow to set this up with a default.
          -->
+         
         <Context baseurl="openaire" name="OpenAIRE Context">
-            <!-- Date format, field prefixes, etc are ensured by the transformer -->
-            <Transformer ref="openaireTransformer"/>
-            <!-- OpenAIRE filter -->
-            <Filter ref="openAireFilter"/>
-            <!-- Just an alias, in fact it returns all items within the driver context -->
-            <Set ref="openaireSet"/>
-            <!-- Metadata Formats -->
-            <Format ref="oaidc"/>
-            <Format ref="mets"/>
-            <Description>
-                This contexts complies with OpenAIRE rules.
-            </Description>
+	            <!-- Date format, field prefixes, etc are ensured by the transformer -->
+	            <Transformer ref="openaireTransformer"/>
+	            <!-- OpenAIRE filter -->
+	            <Filter ref="openAireFilter"/>
+	            <!-- Just an alias, in fact it returns all items within the driver context -->
+	            <Set ref="openaireSet"/>
+	            <!-- Metadata Formats -->
+	            <Format ref="oaidc"/>
+	            <Format ref="mets"/>
+	            <Description>
+	                This contexts complies with OpenAIRE Guidelines for Literature Repositories v3.0.
+	            </Description>
+	        </Context>
+	            <!--
+	            OpenAIRE Guidelines 3.0:
+	
+	            - https://guidelines.openaire.eu/
+	
+	            There is a limitation over the embargoedEndDate parameter:
+	
+	            - Predefined DSpace fields don't allow to set this up with a default.
+	         -->
+	        <Context baseurl="openaireDataset" name="OpenAIRE dataset Context">
+	            <!-- Date format, field prefixes, etc are ensured by the transformer -->
+	            <Transformer ref="openaireTransformer"/>
+	            <!-- OpenAIRE filter -->
+	            <Filter ref="openAireDatasetFilter"/>
+	            <!-- Just an alias, in fact it returns all items within the driver context -->
+	            <Set ref="openaireDatasetSet"/>
+	            <!-- Metadata Formats -->
+	            <Format ref="oaidc"/>
+	            <Format ref="mets"/>
+	            <Description>
+	                This contexts complies with OpenAIRE Guidelines for Literature Repositories v3.0 on Datasets.
+	            </Description>
         </Context>
+        
+        
 	    <!-- FCT FILTER -->         
         <Context baseurl="fct" name="FCT Context">
 	    <!-- Date format, field prefixes, etc are ensured by the transformer -->
@@ -244,54 +270,103 @@
             </Definition>
         </Filter>
 
-        <!-- OpenAIRE filter for records returned by OAI-PMH.
-             By default, return an Item record:
-               * If a Title & Author field both exist
-               * AND a valid DRIVER Document Type exists
-               * AND Item is either publicly accessible OR Withdrawn (for tombstones)
-               * AND the OpenAIRE "dc.relation" is specified
-             This filter is only used in the OpenAIRE context ([oai]/openaire).
-        -->
 
+	<!-- OpenAIRE filter for records returned by OAI-PMH.
+	             By default, return an Item record:
+	               * If a Title & Author field both exist
+	               * AND a valid DRIVER Document Type exists
+	               * AND Item is either publicly accessible OR Withdrawn (for tombstones)
+	               * AND the OpenAIRE "dc.relation" is specified
+	             This filter is only used in the OpenAIRE context ([oai]/openaire).
+        -->
         <Filter id="openAireFilter">
-            <Definition>
-                <And>
-                    <LeftCondition>
-                        <And>
-                            <LeftCondition>
-                                <Custom ref="titleExistsCondition"/>
-                            </LeftCondition>
-                            <RightCondition>
-                                <Custom ref="authorExistsCondition"/>
-                            </RightCondition>
-                        </And>
-                    </LeftCondition>
-                    <RightCondition>
-                        <And>
-                            <LeftCondition>
-                                <Custom ref="driverDocumentTypeCondition"/>
-                            </LeftCondition>
-                            <RightCondition>
-                                <And>
-                                    <LeftCondition>
-                                        <Or>
-                                            <LeftCondition>
-                                                <Custom ref="itemAccessCondition"/>
-                                            </LeftCondition>
-                                            <RightCondition>
-                                                <Custom ref="itemWithdrawnCondition"/>
-                                            </RightCondition>
-                                        </Or>
-                                    </LeftCondition>
-                                    <RightCondition>
-                                        <Custom ref="openaireRelationCondition"/>
-                                    </RightCondition>
-                                </And>
-                            </RightCondition>
-                        </And>
-                    </RightCondition>
-                </And>
-            </Definition>
+	            <Definition>
+	                <And>
+	                    <LeftCondition>
+	                        <And>
+	                            <LeftCondition>
+	                                <And>
+	                                    <LeftCondition>
+	                                        <Custom ref="titleExistsCondition"/>
+	                                    </LeftCondition>
+	                                    <RightCondition>
+	                                        <Custom ref="authorExistsCondition"/>
+	                                    </RightCondition>
+	                                </And>
+	                            </LeftCondition>
+	                            <RightCondition>
+	                                <Custom ref="driverDocumentTypeCondition"/>
+	                            </RightCondition>
+	                        </And>
+	                    </LeftCondition>
+	                    <RightCondition>
+	                        <Or>
+	                            <LeftCondition>
+	                                <And>
+	                                    <LeftCondition>
+	                                        <Or>
+	                                            <LeftCondition>
+	                                                <Custom ref="itemAccessCondition"/>
+	                                            </LeftCondition>
+	                                            <RightCondition>
+	                                                <Custom ref="itemWithdrawnCondition"/>
+	                                            </RightCondition>
+	                                        </Or>
+	                                    </LeftCondition>
+	                                    <RightCondition>
+	                                        <Custom ref="driverAccessCondition"/>
+	                                    </RightCondition>
+	                                </And>
+	                            </LeftCondition>
+	                            <RightCondition>
+	                                <Custom ref="openaireRelationCondition"/>
+	                            </RightCondition>
+	                        </Or>
+	                    </RightCondition>
+	                </And>
+	            </Definition>
+	        </Filter>
+	
+	        <!-- OpenAIRE filter for records returned by OAI-PMH.
+	             By default, return an Item record:
+	               * If a Title & Author field both exist
+	               * AND a valid DRIVER Document Type exists
+	               * AND Item is either publicly accessible OR Withdrawn (for tombstones)
+	               * AND the OpenAIRE "dc.relation" is specified
+	             This filter is only used in the OpenAIRE context ([oai]/openaire).
+	        -->
+	        <Filter id="openAireDatasetFilter">
+	            <Definition>
+	                <And>
+	                    <LeftCondition>
+	                        <Custom ref="datasetDocumentTypeCondition"/>
+	                    </LeftCondition>
+	                    <RightCondition>
+	                        <And>
+	                            <LeftCondition>
+	                                <Or>
+	                                    <LeftCondition>
+	                                        <Custom ref="itemAccessCondition"/>
+	                                    </LeftCondition>
+	                                    <RightCondition>
+	                                        <Custom ref="itemWithdrawnCondition"/>
+	                                    </RightCondition>
+	                                </Or>
+	                            </LeftCondition>
+	                            <RightCondition>
+	                                <Or>
+	                                    <LeftCondition>
+	                                        <Custom ref="driverAccessCondition"/>
+	                                    </LeftCondition>
+	                                    <RightCondition>
+	                                        <Custom ref="openaireRelationCondition"/>
+	                                    </RightCondition>
+	                                </Or>
+	                            </RightCondition>
+	                        </And>
+	                    </RightCondition>
+	                </And>
+	            </Definition>
         </Filter>
 
         <!-- UKETD Filter for records returned by OAI-PMH.
@@ -427,9 +502,24 @@
                     <string>annotation</string>
                     <string>contributionToPeriodical</string>
                     <string>patent</string>
+                    <string>dataset</string>
                     <string>other</string>
-                </list>
-            </Configuration>
+                 </list>
+		</Configuration>
+		</CustomCondition>
+
+		<!-- This condition determines if an Item has a "dc.type" field
+		     specifying one of the valid DATASET document types. -->
+		<CustomCondition id="datasetDocumentTypeCondition">
+		    <Class>org.dspace.xoai.filter.DSpaceAtLeastOneMetadataFilter</Class>
+		    <Configuration>
+			<string name="field">dc.type</string>
+			<string name="operator">contains</string>
+			<list name="values">
+			    <string>dataset</string>
+			    <string>Dataset</string>
+			</list>
+		    </Configuration>
         </CustomCondition>
 
         <!-- This condition determines if an Item has a "dc.rights" field
@@ -441,7 +531,7 @@
                 <string name="field">dc.rights</string>
                 <string name="operator">contains</string>
                 <list name="values">
-                    <string>open access</string>
+                    <!--<string>open access</string>-->
                     <string>openAccess</string>
                 </list>
             </Configuration>
@@ -467,7 +557,7 @@
             <Configuration>
                 <string name="field">dc.relation</string>
                 <string name="operator">starts_with</string>
-                <string name="value">info:eu-repo/grantAgreement</string>
+                <string name="value">info:eu-repo/grantAgreement/</string>
             </Configuration>
         </CustomCondition>
     </Filters>
@@ -478,10 +568,15 @@
             <Name>Open Access DRIVERset</Name>
             <!-- Just an alias -->
         </Set>
-        <Set id="openaireSet">
-            <Spec>ec_fundedresources</Spec>
-            <Name>EC_fundedresources set</Name>
-            <!-- Just an alias -->
+         <Set id="openaireSet">
+	            <Spec>openaire</Spec>
+	            <Name>OpenAIRE</Name>
+	            <!-- Just an alias -->
+	        </Set>
+	        <Set id="openaireDatasetSet">
+	            <Spec>openaireDataset</Spec>
+	            <Name>OpenAIRE datasets</Name>
+	            <!-- Just an alias -->
         </Set>
         <!-- FCT FILTER -->
         <Set id="fctSet">
