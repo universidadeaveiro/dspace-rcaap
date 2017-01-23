@@ -566,6 +566,238 @@
                     </field>
                 </page>
             </form>
+            <form name="thesisTID">
+	    	            <page number="1">
+	    	                <field>
+	    	                    <dc-schema>dc</dc-schema>
+	    	                    <dc-element>title</dc-element>
+	    	                    <dc-qualifier></dc-qualifier>
+	    	                    <repeatable>false</repeatable>
+	    	                    <label>T&#xED;tulo</label>
+	    	                    <input-type>onebox</input-type>
+	    	                    <hint>Introduza o t&#xED;tulo da tese ou disserta&#xE7;&#xE3;o. O t&#xED;tulo n&#xE3;o deve terminar com pontua&#xe7;&#xE3;o. N&#xE3;o &#xE9; poss&#xED;vel formatar em it&#xE1;lico. Se tiver um subt&#xED;tulo coloque [ : ]. Use mai&#xFA;sculas apenas para a primeira letra e nomes pr&#xF3;prios.
+	    	         &lt;br&gt;Exemplo: &lt;b&gt;T&#xED;tulo do Trabalho : subt&#xED;tulo do trabalho&lt;/b&gt;
+	    	         </hint>
+	    	                    <required>Tem que introduzir um t&#xED;tulo principal do trabalho.</required>
+	    	                </field>
+	    	                <field>
+	    	                    <dc-schema>dc</dc-schema>
+	    	                    <dc-element>title</dc-element>
+	    	                    <dc-qualifier>alternative</dc-qualifier>
+	    	                    <repeatable>false</repeatable>
+	    	                    <label>Outro T&#xED;tulo</label>
+	    	                    <input-type>onebox</input-type>
+	    	                    <hint>Introduza se necess&#xE1;rio outro t&#xED;tulo associado ao trabalho.</hint>
+	    	                </field>
+	    	                <field>
+	    	                    <dc-schema>dc</dc-schema>
+	    	                    <dc-element>contributor</dc-element>
+	    	                    <dc-qualifier>author</dc-qualifier>
+	    	                    <repeatable>false</repeatable>
+	    	                    <label>Autor</label>
+	    	                    <input-type>name</input-type>
+	    	                    <hint>Introduza o nome do autor da tese ou disserta&#xe7;&#xE3;o.</hint>
+	    	                    <required>Tem que introduzir em baixo o nome do autor.</required>
+	    	                </field>
+	    	                <field>
+	    	                    <dc-schema>dc</dc-schema>
+	    	                    <dc-element>contributor</dc-element>
+	    	                    <dc-qualifier>advisor</dc-qualifier>
+	    	                    <repeatable>true</repeatable>
+	    	                    <label>Orientador(es)</label>
+	    	                    <input-type>name</input-type>
+	    	                    <hint>Introduza em baixo o nome do(s) orientador(es) ou revisor(es) do trabalho.</hint>
+	    	                    <required></required>
+	    	                </field>
+	    	                <field>
+	    	                    <dc-schema>dc</dc-schema>
+	    	                    <dc-element>date</dc-element>
+	    	                    <dc-qualifier>issued</dc-qualifier>
+	    	                    <repeatable>false</repeatable>
+	    	                    <label>Data de Defesa</label>
+	    	                    <input-type>date</input-type>
+	    	                    <hint>Introduza a data em que o trabalho foi defendido.</hint>
+	    	                    <required>Tem que inserir pelo menos o ano.</required>
+	    	                </field>
+	    	                <field>
+	    	                    <dc-schema>dc</dc-schema>
+	    	                    <dc-element>date</dc-element>
+	    	                    <dc-qualifier>submitted</dc-qualifier>
+	    	                    <repeatable>false</repeatable>
+	    	                    <label>Data de submiss&#xE3;o</label>
+	    	                    <input-type>date</input-type>
+	    	                    <hint>Introduza a data em que o trabalho foi submetido para defesa.</hint>
+	    	                </field>
+	    	                <field>
+	    	                    <dc-schema>dc</dc-schema>
+	    	                    <dc-element>identifier</dc-element>
+	    	                    <dc-qualifier>tid</dc-qualifier>
+	    	                    <repeatable>false</repeatable>
+	    	                    <label>Identificador do Trabalho (TID)</label>
+	    	                    <input-type>onebox</input-type>
+	    	                    <hint>Indique o identificador do trabalho atribu&#xED;do pelo RENATES.</hint>
+	    	                    <required>Tem que indicar o identificador do trabalho (TID).</required>  
+	    	                    <!--<required></required>-->
+	    	                </field>
+	    	                <field>
+	    	                    <dc-schema>thesis</dc-schema>
+	    	                    <dc-element>degree</dc-element>
+	    	                    <dc-qualifier>name</dc-qualifier>
+	    	                    <repeatable>false</repeatable>
+	    	                    <label>Designa&#xe7;&#xE3;o</label>
+	    	                    <input-type>onebox</input-type>
+	    	                    <hint>Designa&#xe7;&#xE3;o do grau associado ao trabalho, tal como apresentado na obra. (exemplo: Mestrado em Tecnologias Educativas)</hint>
+	    	                </field>
+	    	                <field>
+	    	                    <dc-schema>dc</dc-schema>
+	    	                    <dc-element>type</dc-element>
+	    	                    <dc-qualifier></dc-qualifier>
+	    	                    <label>Tipo</label>
+	    	                    <input-type value-pairs-name="thesis_types">dropdown</input-type>
+	    	                    <hint>Indique qual o tipo de trabalho.</hint>
+	    	                    <required>&#xE9; obrigat&#xF3;rio selecionar uma tipologia do trabalho.</required>
+	    	                </field>
+	    	             <!--   <field>
+	    	                    <dc-schema>thesis</dc-schema>
+	    	                    <dc-element>degree</dc-element>
+	    	                    <dc-qualifier>level</dc-qualifier>
+	    	                    <repeatable>false</repeatable>
+	    	                    <label>Grau Obtido</label>
+	    	                    <input-type>onebox</input-type>
+	    	                    <hint>Designa&#xe7;&#xE3;o do grau obtido</hint>
+	    	                </field> Retirado por ser redundante com o campo da tipologia de trabalho -->
+	    	               <!-- Campo Ã¡reas cientÃ­ficas inicial <field>
+	    	                    <dc-schema>thesis</dc-schema>
+	    	                    <dc-element>degree</dc-element>
+	    	                    <dc-qualifier>discipline</dc-qualifier>
+	    	                    <repeatable>true</repeatable>
+	    	                    <label>&#xC1;rea Cient&#xED;fica</label>
+	    	                    <input-type>onebox</input-type>
+	    	                    <hint>&#xC1;rea cient&#xED;fica associada ao trabalho</hint>
+	    	                    
+	    	                </field> -->
+	    	                <field>
+	    	                    <dc-schema>dc</dc-schema>
+	    	                    <dc-element>subject</dc-element>
+	    	                    <dc-qualifier>fos</dc-qualifier>
+	    	                    <repeatable>true</repeatable>
+	    	                    <label>Dom&#xED;nio Cient&#xED;fico</label>
+	    	                    <input-type>onebox</input-type>
+	    	                    <hint>Clique em &#x22;Assuntos&#x22; para selecionar a &#xE1;rea cient&#xED;fica associada ao trabalho de acordo com classifica&#231;&#227;o &lt;a href="http://www.oecd.org/science/inno/38235147.pdf" target="_blank"&gt;FOS&lt;/a&gt;.</hint>
+	    	                    <vocabulary closed="false">fos</vocabulary>
+	    	                    <required></required>
+	    	                </field>
+	    	                <!--  ** Ser&#xE1; preenchido por defeito
+	    	       <field><dc-schema>thesis</dc-schema><dc-element>degree</dc-element><dc-qualifier>grantor</dc-qualifier><repeatable>false</repeatable><label>Institui&#xe7;&#xE3;o</label><input-type>onebox</input-type><hint>Nome da Institui&#xe7;&#xE3;o que atribui o grau ao trabalho. Deve ser inclu&#xED;do tal como &#xE9; indicado no documento. </hint><required>Deve indicar o nome da institui&#xe7;&#xE3;o</required></field> -->
+	    	            </page>
+	    	            <page number="2">
+	    	                <field>
+	    	                    <dc-schema>dc</dc-schema>
+	    	                    <dc-element>description</dc-element>
+	    	                    <dc-qualifier>abstract</dc-qualifier>
+	    	                    <repeatable>true</repeatable>
+	    	                    <label>Resumo</label>
+	    	                    <input-type>textarea</input-type>
+	    	                    <hint>Introduza em baixo o resumo (abstract) no idioma principal do trabalho. Caso tenha resumo(s) noutro(s) idioma(s) clique no bot&#xE3;o &#x22;Adicionar mais&#x22;.</hint>
+	    	                    <required></required>
+	    	                </field>
+	    	                <field>
+	    	                    <dc-schema>dc</dc-schema>
+	    	                    <dc-element>subject</dc-element>
+	    	                    <dc-qualifier></dc-qualifier>
+	    	                    <repeatable>true</repeatable>
+	    	                    <label>Palavras-chave</label>
+	    	                    <input-type>twobox</input-type>
+	    	                    <hint>Introduza as palavras-chave ou assuntos.</hint>
+	    	                </field>
+	    	                <field>
+	    	                    <dc-schema>dc</dc-schema>
+	    	                    <dc-element>language</dc-element>
+	    	                    <dc-qualifier>iso</dc-qualifier>
+	    	                    <repeatable>false</repeatable>
+	    	                    <label>Idioma</label>
+	    	                    <input-type value-pairs-name="common_iso_languages">dropdown</input-type>
+	    	                    <hint>Selecione o idioma predominante do trabalho. Se o idioma n&#xE3;o aparecer listado em baixo selecione "Outro".</hint>
+	    	                    <required>Insira o idioma do documento</required>
+	    	                </field>
+	    	                <field>
+	    	                    <dc-schema>dc</dc-schema>
+	    	                    <dc-element>relation</dc-element>
+	    	                    <dc-qualifier></dc-qualifier>
+	    	                    <repeatable>true</repeatable>
+	    	                    <label>Projeto ou Bolsa de Financiamento</label>
+	    	                    <input-type>onebox</input-type>
+	    	                    <hint>Caso o trabalho tenha resultado de bolsa ou projeto(s) financiado(s) pela Comiss&#xE3;o Europeia (FP7, H2020, ERC), Funda&#xe7;&#xE3;o para a Ci&#234;ncia e Tecnologia ou Wellcome Trust, identifique esse(s) projeto(s) ou bolsa aqui. Essa identifica&#xe7;&#xE3;o &#xE9; geralmente um requisito dos financiadores.
+	    	Para identificar o(s) projeto(s) ou bolsa insira um dos seus elementos identificativos (n&#xFA;mero, nome, acr&#xf3;nimo ou refer&#xEA;ncia) e selecione da lista que lhe &#xE9; apresentada. D&#xfa;vidas ou mais informa&#xe7;&#xf5;es aceda &lt;a href="http://projeto.rcaap.pt/index.php/lang-pt/como-auto-arquivar-documentos/politica-fct" target="_blank"&gt;aqui&lt;/a&gt;</hint>
+	    	                </field>
+	    	                <field>
+	    	                    <dc-schema>dc</dc-schema>
+	    	                    <dc-element>rights</dc-element>
+	    	                    <dc-qualifier></dc-qualifier>
+	    	                    <repeatable>false</repeatable>
+	    	                    <label>Acesso</label>
+	    	                    <input-type value-pairs-name="common_rights">dropdown</input-type>
+	    	                    <hint>Esta cole&#xe7;&#xE3;o &#xE9; por predefini&#xe7;&#xE3;o de Acesso Aberto, caso pretenda que este trabalho tenha outra condi&#xe7;&#xE3;o de acesso indique-a aqui.</hint>
+	    	                    <required></required>
+	    	                </field>
+	    	                <field>
+	    	                    <dc-schema>dc</dc-schema>
+	    	                    <dc-element>date</dc-element>
+	    	                    <dc-qualifier>embargo</dc-qualifier>
+	    	                    <repeatable>false</repeatable>
+	    	                    <label>Data Final do Embargo</label>
+	    	                    <input-type>date</input-type>
+	    	                    <hint>Caso tenha indicado &#x22;Acesso Embargado&#x22; no campo &#x22;Acesso&#x22;, indique a data do final do embargo, a partir da qual o documento passar&#xE1; a estar dispon&#xED;vel em Acesso Aberto. Deve indicar pelo menos o ano e o m&#234;s.</hint>
+	    	                </field>
+	    	                <field>
+	    	                        <dc-schema>rcaap</dc-schema>
+	    	                        <dc-element>embargofct</dc-element>
+	    	                        <dc-qualifier></dc-qualifier>
+	    	                        <repeatable>false</repeatable>
+	    	                        <label>Justifica&#xe7;&#xE3;o do Prolongamento do Embargo</label>
+	    	                        <input-type>textarea</input-type>
+	    	                        <hint>No caso da publica&#xe7;&#xE3;o ter financiamento FCT e de ter indicado um per&#xED;odo de embargo superior a 12 meses (nas ci&#234;ncias sociais e humanidades) ou 6 meses para as restantes &#xE1;reas indique as raz&#xF5;es.</hint>
+	    	                    </field>
+	    						<field>
+	    	                        <dc-schema>rcaap</dc-schema>
+	    	                        <dc-element>contributor</dc-element>
+	    	                        <dc-qualifier>authoremail</dc-qualifier>
+	    	                        <repeatable>false</repeatable>
+	    	                        <label>Contacto do autor(a) para envio de pedido de c&#xF3;pia </label>
+	    	                        <input-type>onebox</input-type>
+	    	                        <hint>De acordo com a informa&#xe7;&#xE3;o anterior, se a tese for de acesso restrito ou embargado, insira aqui o e-mail do autor(a) da tese  para posterior envio de resposta a eventuais pedidos de c&#xF3;pia ou de acesso.</hint>
+	    	                        <required></required>
+	    	                    </field>
+	    	                <field>
+	    	                    <dc-schema>dc</dc-schema>
+	    	                    <dc-element>rights</dc-element>
+	    	                    <dc-qualifier>uri</dc-qualifier>
+	    	                    <repeatable>false</repeatable>
+	    	                    <label>Licen&#xe7;a Creative Commons</label>
+	    	                    <input-type value-pairs-name="creative_commons">dropdown</input-type>
+	    	                    <hint>Associe uma licen&#xe7;a Creative Commons 4.0 Internacional ao seu trabalho, escolhendo-a da lista apresentada. No caso de trabalhos financiados pela FCT o uso da licen&#xe7;a CC-BY &#xE9; recomendado. Saiba mais &lt;a href="http://projeto.rcaap.pt/index.php/lang-pt/como-auto-arquivar-documentos/politica-fct" target="_blank" &gt;aqui&lt;/a&gt;</hint>
+	    	                </field>
+	    	                <field>
+	    	                    <dc-schema>dc</dc-schema>
+	    	                    <dc-element>description</dc-element>
+	    	                    <dc-qualifier>sponsorship</dc-qualifier>
+	    	                    <repeatable>true</repeatable>
+	    	                    <label>Outra(s) entidade(s) patrocinadora(s)</label>
+	    	                    <input-type>textarea</input-type>
+	    	                    <hint>Introduza os nomes de eventuais patrocinadores do trabalho</hint>
+	    	                    <required></required>
+	    	                </field>
+	    	                <field>
+	    	                    <dc-schema>dc</dc-schema>
+	    	                    <dc-element>description</dc-element>
+	    	                    <dc-qualifier></dc-qualifier>
+	    	                    <repeatable>true</repeatable>
+	    	                    <label>Coment&#xE1;rios</label>
+	    	                    <input-type>textarea</input-type>
+	    	                    <hint>Insira alguma informa&#xe7;&#xE3;o adicional se necess&#xE1;rio. </hint>
+	    	                </field>
+	    	            </page>
+        </form>
         </form-definitions>
         <!-- form-value-pairs populate dropdown and qualdrop-value lists.          -->
         <!-- The form-value-pairs element holds child elements named 'value-pairs' -->
