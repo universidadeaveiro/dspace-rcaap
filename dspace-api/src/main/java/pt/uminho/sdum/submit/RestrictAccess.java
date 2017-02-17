@@ -36,8 +36,13 @@ public class RestrictAccess {
 
     public static void restrictItemAccess(Context context,Item item){
 
-        if(item.getMetadata("dc.rights").equals("restrictedAccess")
-                || item.getMetadata("dc.rights").equals("closedAccess")) {
+        //Changed to correct null Pointer Exception
+       String dcRights = "";
+       if(item != null)
+       	dcRights = item.getMetadata("dc.rights") != null ? item.getMetadata("dc.rights") : dcRights;
+
+       //Changed to correct null Pointer Exception
+       if(dcRights.equals("restrictedAccess") || dcRights.equals("closedAccess")) {
 
             Group anonGroup  = null;
             try {
