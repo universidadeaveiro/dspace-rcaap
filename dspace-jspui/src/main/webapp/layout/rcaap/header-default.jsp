@@ -136,24 +136,26 @@
 
 
 <!-- Begin Cookie Consent plugin by Silktide - http://silktide.com/cookieconsent -->
-<link rel="stylesheet" type="text/css" href="https://s3-eu-west-1.amazonaws.com/assets.cookieconsent.silktide.com/current/style.min.css"/>
-<script type="text/javascript" src="https://s3-eu-west-1.amazonaws.com/assets.cookieconsent.silktide.com/current/plugin.min.js"></script>
-<script type="text/javascript">
-// <![CDATA[
-cc.initialise({
-	cookies: {
-		analytics: {}
-	},
-	settings: {
-		consenttype: "implicit",
-		bannerPosition: "bottom",
-		tagPosition: "vertical-right",
-		hideprivacysettingstab: true,
-		onlyshowbanneronce: true,
-		useSSL: true
-	}
-});
-// ]]>
+<link rel="stylesheet" type="text/css" href="<%= request.getContextPath() %>/static/css/cookieconsent.min.css" />
+<script src="<%= request.getContextPath() %>/static/js/cookieconsent.min.js"></script>
+<script>
+window.addEventListener("load", function(){
+window.cookieconsent.initialise({
+ "palette": {
+   "popup": {
+     "background": "#000"
+   },
+   "button": {
+     "background": "#f1d600"
+   }
+ },
+ "showLink": false,
+ "theme": "classic",
+ "content": {
+   "message": "<fmt:message key="jsp.cookieconsent.message" />",
+   "dismiss": "<fmt:message key="jsp.cookieconsent.dismiss" />!"
+ }
+})});
 </script>
 <!-- End Cookie Consent plugin -->
     </head>
