@@ -34,8 +34,7 @@
 <%@ page import="org.dspace.core.ConfigurationManager" %>
 <%@ page import="org.dspace.core.Utils" %>
 <%@ page import="javax.servlet.jsp.jstl.fmt.LocaleSupport" %>
-<%@ page import="pt.keep.dspace.chart.ChartManager" %>
-<%@ page import="pt.keep.dspace.report.ReportLinkManager" %>
+
 
 <%
     // Retrieve attributes
