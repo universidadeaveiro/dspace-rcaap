@@ -1224,12 +1224,16 @@ Seleccione o tipo (em mai&#xfa;sculas) e o sub-tipo. ?? necess&#xE1;rio ?? </hin
                     <stored-value>patent</stored-value>
                 </pair>
                 <pair>
-                    <displayed-value>Outro</displayed-value>
-                    <stored-value>other</stored-value>
-                </pair>
-                <pair>
 		    <displayed-value>Dataset</displayed-value>
 		    <stored-value>dataset</stored-value>
+                </pair>
+                <pair>
+            <displayed-value>Recurso Educativo</displayed-value>
+            <stored-value>pedagogicalPublication</stored-value>
+                </pair>
+                <pair>
+                    <displayed-value>Outro</displayed-value>
+                    <stored-value>other</stored-value>
                 </pair>
             </value-pairs>
             <!-- default language order: (from dspace 1.2.1)
