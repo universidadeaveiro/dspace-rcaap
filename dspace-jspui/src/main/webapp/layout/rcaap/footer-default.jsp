@@ -38,7 +38,7 @@
 <div class="footer-custom-rcaap">
 <%@ include file="footer-rcaap-sari.jsp" %>
 </div>
-</div>
+
 </main>
             <%-- Page footer --%>
              <footer class="navbar navbar-bottom">
