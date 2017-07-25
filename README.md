@@ -1,4 +1,4 @@
-[![Build Status](http://testes.jenkins.rcaap.pt/buildStatus/icon?job=GITLAB - PUBLIC DSPACE)](http://testes.jenkins.rcaap.pt/job/GITLAB - PUBLIC DSPACE)
+[![Build Status](https://testes.jenkins.rcaap.pt/buildStatus/icon?job=SARI - Public)](https://testes.jenkins.rcaap.pt/job/SARI%20-%20Public/)
 
 To add piwik (statistics access for openaire)
 
