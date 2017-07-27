@@ -149,3 +149,70 @@ Disallow: /
 # http://www.webreaper.net/
 User-agent: WebReaper
 Disallow: /
+
+
+# RCAAP: remove other crawlers
+User-agent: adbeat_bot
+Disallow: /
+User-agent: AhrefsBot
+Disallow: /
+User-agent: AITCSRobot
+Disallow: /
+User-agent: Alexibot
+Disallow: /
+User-agent: Baiduspider
+Disallow: /
+User-agent: BLEXBot
+Disallow: /
+User-agent: Cliqzbot
+Disallow: /
+User-agent: DotBot
+Disallow: /
+User-agent: dotbot
+Disallow: /
+User-agent: Exabot
+Disallow: /
+User-agent: expo9
+Disallow: /
+User-agent: Huaweisymantecspider
+Disallow: /
+User-agent: InfluenceBot
+Disallow: /
+User-agent: ltx71
+Disallow: /
+User-agent: ltx71 - (http://ltx71.com/)
+Disallow: /
+User-agent: MaxPointCrawler
+Disallow: /
+User-agent: MJ12bot
+Disallow: /
+User-agent: rogerbot
+Disallow: /
+User-agent: SemrushBot
+Disallow: /
+User-agent: SemrushBot-SA
+Disallow: /
+User-agent: seoscanners.net
+Disallow: /
+User-agent: SiteSnagger
+Disallow: /
+User-agent: SurveyBot
+Disallow: /
+User-agent: turnitinbot
+Disallow: /
+User-agent: WebReaper
+Disallow: /
+User-agent: Xaldon_WebSpider
+Disallow: /
+User-agent: Xenu’s
+Disallow: /
+User-agent: Xenu’s Link Sleuth 1.1c
+Disallow: /
+User-agent: YandexBot
+Disallow: /
+
+# RCAAP delay crallers
+User-agent: bingbot
+Crawl-delay: 10
+User-agent: Yahoo
+Crawl-delay: 10
