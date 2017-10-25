@@ -60,8 +60,8 @@
 		<div class="col-md-6 sponsors">
 			<p>Financiadores do RCAAP:</p>
 			<a href="http://www.portugal.gov.pt/" target="_blank" title="Rep&uacute;blica Portuguesa"><span class="hide-text logos logos-logo-rp-mctes">Rep&uacute;blica Portuguesa &middot; Minist&eacute;rio da Ci&ecirc;ncia, Tecnologia e Ensino Superior</span></a>
-			<a href="http://www.posc.mctes.pt/" target="_blank" title="POS_Conhecimento"><span class="hide-text logos logos-logo-posc">POS_C</span></a>
-			<a href="http://www.europa.eu.int/" target="_blank" title="Uni&atilde;o Europeia"><span class="hide-text logos logos-logo_FEDER">Uni&atilde;o Europeia - Programa FEDER</span></a>
+			<!--<a href="http://www.posc.mctes.pt/" target="_blank" title="POS_Conhecimento"><span class="hide-text logos logos-logo-posc">POS_C</span></a>-->
+			<a href="https://europa.eu/european-union/index_pt" target="_blank" title="Uni&atilde;o Europeia"><span class="hide-text logos logos-logo_FEDER">Uni&atilde;o Europeia - Programa FEDER</span></a>
 		</div>
 	</div>
 	 </div>   
