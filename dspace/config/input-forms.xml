@@ -1320,7 +1320,6 @@ Seleccione o tipo (em mai&#xfa;sculas) e o sub-tipo. ?? necess&#xE1;rio ?? </hin
 			<stored-value>info:eu-repo/semantics/updatedVersion</stored-value>
 		</pair>
 	</value-pairs>
-     </value-pairs>
     <value-pairs value-pairs-name="ddi_types" dc-term="type">
      <pair>
        <displayed-value>Inqu&#xE9;rito</displayed-value>
@@ -1351,5 +1350,5 @@ Seleccione o tipo (em mai&#xfa;sculas) e o sub-tipo. ?? necess&#xE1;rio ?? </hin
        <stored-value>outro</stored-value>
      </pair>
    </value-pairs>       
-        </form-value-pairs>
+ </form-value-pairs>
 </input-forms>
