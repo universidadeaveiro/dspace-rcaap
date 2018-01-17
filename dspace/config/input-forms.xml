@@ -36,7 +36,7 @@
                         <dc-qualifier>author</dc-qualifier>
                         <repeatable>true</repeatable>
                         <label>Autores</label>
-                        <input-type>name</input-type>
+                        <input-type>onebox</input-type>
                         <hint>Introduza os nomes dos autores do trabalho.</hint>
                         <required></required>
                     </field>
